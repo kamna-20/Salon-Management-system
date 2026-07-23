@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<h2>Add Staff</h2>
+
+<form action="/staff" method="POST">
+
+    <label>Staff Name</label><br>
+    <input type="text" name="name" required><br><br>
+
+    <label>Phone</label><br>
+    <input type="text" name="phone" required><br><br>
+
+    <label>Specialization</label><br>
+    <input type="text" name="specialization" placeholder="Haircut, Facial" required><br><br>
+
+    <label>Available</label><br>
+    <select name="available">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+    </select><br><br>
+
+    <input type="submit" value="Add Staff">
+
+</form>
+{% endblock %}

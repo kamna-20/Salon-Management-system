@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1> Glow & Grace Salon  Management  System</h1>
+
+<hr>
+
+<h3>Total Customers: {{ customers }}</h3>
+
+<h3>Total Services: {{ services }}</h3>
+
+<h3>Total Appointments: {{ appointments }}</h3>
+
+<br>
+
+<h3><a href="/customer">Add Customer</a><br><br></h3>
+
+<h3><a href="/service">Add Service</a><br><br></h3>
+
+<h3><a href="/staff">Add Staff</a><br><br></body><h3>
+
+<h3><a href="/appointment">Book Appointment</a></h3>
+
+{% endblock %}

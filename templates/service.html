@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<h2>Add Service</h2>
+
+<form action="/service" method="POST">
+
+    <label>Service Name</label><br>
+    <input type="text" name="service_name" required><br><br>
+
+    <label>Price</label><br>
+    <input type="number" name="price" required><br><br>
+
+    <label>Duration</label><br>
+    <input type="text" name="duration" placeholder="30 Minutes" required><br><br>
+
+    <input type="submit" value="Add Service">
+
+</form>
+{% endblock %}

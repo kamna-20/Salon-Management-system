@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Add Customer</h2>
+
+<form action="/customer" method="POST">
+
+    <label>Name</label><br>
+    <input type="text" name="name" required><br><br>
+
+    <label>Phone</label><br>
+    <input type="text" name="phone" required><br><br>
+
+    <label>Gender</label><br>
+    <select name="gender">
+        <option>Male</option>
+        <option>Female</option>
+    </select><br><br>
+
+    <label>Address</label><br>
+    <textarea name="address"></textarea><br><br>
+
+    <input type="submit" value="Add Customer">
+
+</form>
+{% endblock %}

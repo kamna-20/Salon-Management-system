@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Book Appointment</h2>
+
+<form action="/appointment" method="POST">
+
+    <label>Customer Name</label><br>
+    <input type="text" name="customer_name" required><br><br>
+
+    <label>Service Name</label><br>
+    <input type="text" name="service_name" required><br><br>
+
+    <label>Staff Name</label><br>
+    <input type="text" name="staff_name" required><br><br>
+
+    <label>Date</label><br>
+    <input type="date" name="appointment_date" required><br><br>
+
+    <label>Time</label><br>
+    <input type="time" name="appointment_time" required><br><br>
+
+    <input type="submit" value="Book Appointment">
+
+</form>
+{% endblock %}
