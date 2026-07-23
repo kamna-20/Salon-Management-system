@@ -9,8 +9,9 @@
 
 /* Body */
 body{
-    background:#f8f4f8;
-    color:#333;
+    background:#d752d7;
+    color:#c43434;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 /* Navbar */
@@ -62,7 +63,7 @@ input, select, textarea{
     width:100%;
     padding:10px;
     margin:10px 0;
-    border:1px solid #ccc;
+    border:1px solid #e18f8f;
     border-radius:5px;
 }
 
