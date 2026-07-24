@@ -1,0 +1,20 @@
+pip freeze > requirements .txt
+pip freeze
+echo. > requirements .txt
+pip freeze
+pip install gunicorn
+pip freeze
+git add .
+pwd
+dir
+git init
+git status
+pip install python-dotenv
+python app.py
+git status
+git config --global --add safe.directory "D:/ Salon_ Management_System"
+pwd
+cd
+pwd
+git rev-parse --show-toplevel
+cd

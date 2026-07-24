@@ -1,13 +1,19 @@
 from flask import Flask, render_template, request, redirect, url_for
 from models import db, User, Customer, Service, Staff, Appointment
 
+from dotenv import load_dotenv 
+import os
+load_dotenv()
+
 app = Flask(__name__)
 
 
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.secret_key = "secret123"
+
+app.config['SECRET_KEY'] 
+os.getenv('SECRET_KEY')
 
 db.init_app(app)
 
