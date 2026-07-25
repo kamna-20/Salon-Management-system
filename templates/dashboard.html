@@ -1,25 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
+<nav class="logo">
+    <span> Glow & Grace Salon  Management  System </span><br><br>
 
-<h1> Glow & Grace Salon  Management  System</h1>
+<ul class="nav-links">
 
-<hr>
+    <li><a href="/customer">Add Customers</a></li><br>
+    <li><a href="/service"> Add Services</a></li><br>
+    <li><a href="/appointment"> Book Appointments</a></li><br>
+    <li><a href="/staff">Add Staff</a></li><br>
+    <li><a href="/Logout">Logout</a></li><br>
+</ul>
+</nav>
 
-<h3>Total Customers: {{ customers }}</h3>
+<br>
+<h3>Total Customers: {{ customers }}</h3><br>
 
-<h3>Total Services: {{ services }}</h3>
+<h3>Total Services: {{ services }}</h3><br>
 
-<h3>Total Appointments: {{ appointments }}</h3>
+<h3>Total Appointments: {{ appointments }}</h3><br>
 
 <br>
 
-<h3><a href="/customer">Add Customer</a><br><br></h3>
-
-<h3><a href="/service">Add Service</a><br><br></h3>
-
-<h3><a href="/staff">Add Staff</a><br><br></body><h3>
-
-<h3><a href="/appointment">Book Appointment</a></h3>
 
 {% endblock %}
