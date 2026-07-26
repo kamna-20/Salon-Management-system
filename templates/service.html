@@ -2,8 +2,18 @@
 
 {% block content %}
 
+<div class="container mt-5">
+    <div class="row service-card">
 
-<h2>Add Service</h2>
+        <div class="col-md-6 image-section">
+            <img src="{{ url_for('static', filename='images/service.jpg') }}"
+                 class="img-fluid rounded-start h-100"
+                 alt="Salon Service">
+        </div>
+
+        <div class="col-md-6 p-5">
+
+            <h2 class="text-center mb-4">💇 Add Service</h2>
 
 <form action="/service" method="POST">
 
@@ -30,7 +40,13 @@
     <label>Duration</label><br>
     <input type="text" name="duration" placeholder="30 Minutes" required><br><br>
 
-    <input type="submit" value="Add Service">
-
+<br><br>
+<button type="submit" class="btn btn-service w-100">
+                Save Service
+            </button>
 </form>
+        </div>
+
+    </div>
+</div>
 {% endblock %}

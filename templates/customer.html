@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="container mt-5">
 
-<h2>Add Customer</h2>
+    <div class="customer-card">
+
+        <h2 class="text-center mb-4">✨ Add New Customer</h2>
 
 <form action="/customer" method="POST">
 
@@ -24,4 +27,6 @@
     <input type="submit" value="Add Customer">
 
 </form>
+</div>
+</div>
 {% endblock %}

@@ -1,27 +1,80 @@
 {% extends "base.html" %}
 
 {% block content %}
-<nav class="logo">
-    <span> Glow & Grace Salon  Management  System </span><br><br>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <div class="cointainer">
+<a class="navbar-brand fw-bold" href="#"> Glow & Grace Salon</a><br><br>
+    </div> 
+    </nav>
 
-<ul class="nav-links">
 
-    <li><a href="/customer">Add Customers</a></li><br>
-    <li><a href="/service"> Add Services</a></li><br>
-    <li><a href="/appointment"> Book Appointments</a></li><br>
-    <li><a href="/staff">Add Staff</a></li><br>
-    <li><a href="/Logout">Logout</a></li><br>
-</ul>
-</nav>
+    <section class="hero">
+        <div class="overlay">
+            <h1> Glow & Grace Salon</h1>
+            <p> Beauty . Style .Confidence</p>
+            <a href="/appointment" class="btn btn-light btn-lg">
+                Book Appointment
+            </a>
+        </div>   
+     </section>
+     <div class="row mt-5">
 
-<br>
-<h3>Total Customers: {{ customers }}</h3><br>
+<div class="col-md-4">
+<div class="card stat-card">
+<h3>{{ total_customers }}</h3>
+<p>Total Customers</p>
+</div>
+</div>
 
-<h3>Total Services: {{ services }}</h3><br>
+<div class="col-md-4">
+<div class="card stat-card">
+<h3>{{ total_services }}</h3>
+<p>Total Services</p>
+</div>
+</div>
 
-<h3>Total Appointments: {{ appointments }}</h3><br>
+<div class="col-md-4">
+<div class="card stat-card">
+<h3>{{ total_appointments }}</h3>
+<p>Appointments</p>
+</div>
+</div>
 
-<br>
+</div>
+<div class="container mt-5">
+
+    <h3 class="mb-4">Quick Actions</h3>
+
+    <div class="row">
+
+        <div class="col-md-3 mb-3">
+            <a href="/customer" class="btn action-btn w-100">
+                ➕ Add Customer
+            </a>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <a href="/service" class="btn action-btn w-100">
+                💇 Add Service
+            </a>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <a href="/appointment" class="btn action-btn w-100">
+                📅 Book Appointment
+            </a>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <a href="/staff" class="btn action-btn w-100">
+                👩‍💼 Add Staff
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
 
 
 {% endblock %}
