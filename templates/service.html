@@ -4,21 +4,28 @@
 
 <div class="container mt-5">
     <div class="row service-card">
-
         <div class="col-md-6 image-section">
-            <img src="{{ url_for('static', filename='images/service.jpg') }}"
-                 class="img-fluid rounded-start h-100"
-                 alt="Salon Service">
-        </div>
+
+    <img src="{{ url_for('static', filename='images/services.jpg') }}"
+         class="img-fluid rounded-start h-100"
+         alt="Salon Service">
+
+    <div class="service-banner text-center">
+        <h2>✨ Premium Salon Services ✨</h2><br><br>
+        <p>Enhance Beauty with Professional Care</p>
+    </div>
+
+</div>  
 
         <div class="col-md-6 p-5">
 
             <h2 class="text-center mb-4">💇 Add Service</h2>
 
+
 <form action="/service" method="POST">
 
     <label>Service Name</label><br>
-    <select name ="services">
+    <select name ="service" class="form-select" required>
         <option>Hair Cutting</option>
         <option> Hair Styling</option>
         <option> Facials & Clean-ups</option>
@@ -35,10 +42,10 @@
     </select> <br><br>
 
     <label>Price</label><br>
-    <input type="number" name="price" required><br><br>
+    <input type="number" name="price" class="form-control" required><br><br>
 
     <label>Duration</label><br>
-    <input type="text" name="duration" placeholder="30 Minutes" required><br><br>
+    <input type="text" name="duration" class="form-control "placeholder="30 Minutes" required><br><br>
 
 <br><br>
 <button type="submit" class="btn btn-service w-100">

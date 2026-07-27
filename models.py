@@ -39,3 +39,4 @@ class Appointment(db.Model):
     staff_name = db.Column(db.String(100), nullable=False)
     appointment_date = db.Column(db.String(20), nullable=False)
     appointment_time = db.Column(db.String(20), nullable=False)
+    

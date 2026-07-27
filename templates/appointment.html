@@ -2,26 +2,57 @@
 
 {% block content %}
 
-<h2>Book Appointment</h2>
 
-<form action="/appointment" method="POST">
+<div class="container mt-5">
 
-    <label>Customer Name</label><br>
-    <input type="text" name="customer_name" required><br><br>
+    <div class="appointment-box">
 
-    <label>Service Name</label><br>
-    <input type="text" name="service_name" required><br><br>
+        <div class="appointment-image">
+            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=900&q=80"
+                 alt="Salon Appointment">
+        </div>
 
-    <label>Staff Name</label><br>
-    <input type="text" name="staff_name" required><br><br>
 
-    <label>Date</label><br>
-    <input type="date" name="appointment_date" required><br><br>
+        <div class="appointment-form">
 
-    <label>Time</label><br>
-    <input type="time" name="appointment_time" required><br><br>
+            <h2>📅 Book Appointment</h2>
+            <p>Schedule your salon visit easily</p>
 
-    <input type="submit" value="Book Appointment">
+            <form action="/appointment" method="POST">
 
-</form>
+                <label>Customer Name</label>
+                <input type="text" name="customer_name"
+                placeholder="Enter Customer Name" required>
+
+
+                <label>Service</label>
+                <select name="service" required>
+                    <option>Select Service</option>
+                    <option>Hair Cut</option>
+                    <option>Facial</option>
+                    <option>Hair Spa</option>
+                    <option>Makeup</option>
+                </select>
+
+
+                <label>Date</label>
+                <input type="date" name="date" required>
+
+
+                <label>Time</label>
+                <input type="time" name="time" required>
+
+
+                <button type="submit">
+                    Confirm Booking
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
 {% endblock %}

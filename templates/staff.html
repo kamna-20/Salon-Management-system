@@ -3,26 +3,50 @@
 {% block content %}
 
 
-<h2>Add Staff</h2>
+<div class="container mt-5">
 
-<form action="/staff" method="POST">
+    <div class="service-card p-5">
 
-    <label>Staff Name</label><br>
-    <input type="text" name="name" required><br><br>
+        <h2 class="text-center mb-4">
+            💼 Add Staff
+        </h2>
 
-    <label>Phone</label><br>
-    <input type="text" name="phone" required><br><br>
+        <form action="/staff" method="POST">
 
-    <label>Specialization</label><br>
-    <input type="text" name="specialization" placeholder="Haircut, Facial" required><br><br>
+            <label>Staff Name</label>
+            <input type="text" name="name" class="form-control" 
+            placeholder="Enter Staff Name" required>
 
-    <label>Available</label><br>
-    <select name="available">
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-    </select><br><br>
 
-    <input type="submit" value="Add Staff">
+            <label class="mt-3">Specialization</label>
+            <select name="specialization" class="form-select" required>
+                <option value="">Select Specialization</option>
+                <option>Hair Stylist</option>
+                <option>Makeup Artist</option>
+                <option>Beautician</option>
+                <option>Nail Artist</option>
+                <option>Skin Specialist</option>
+            </select>
 
-</form>
+
+            <label class="mt-3">Phone Number</label>
+            <input type="text" name="phone" class="form-control"
+            placeholder="Enter Phone Number">
+
+
+            <label class="mt-3">Experience</label>
+            <input type="text" name="experience" class="form-control"
+            placeholder="Staff experience">
+
+
+            <button type="submit" class="btn btn-service w-100 mt-4">
+                Save Staff
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
 {% endblock %}

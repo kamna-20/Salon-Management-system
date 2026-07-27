@@ -97,7 +97,7 @@ def service():
     if request.method == "POST":
 
         service = Service(
-            service_name=request.form["service_name"],
+            service_name=request.form["service"],
             price=request.form["price"],
             duration=request.form["duration"]
         )
