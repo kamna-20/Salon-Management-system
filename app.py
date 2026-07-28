@@ -128,46 +128,58 @@ def staff():
         return  redirect(url_for("staff"))
       return render_template("staff.html")
 
-
 @app.route("/appointment", methods=["GET", "POST"])
 def appointment():
-         
-        staffs = Staff.query.all()
-        services = Service.query.all()
 
-        if request.method == "POST":
+    staffs = Staff.query.all()
+    services = Service.query.all()
 
-       
-          date = request.form["appointment_date"]
-          time = request.form["appointment_time"]
+    if request.method == "POST":
 
-        # # Check staff already booked or not
-        # existing = Appointment.query.filter_by(
-        #     staff_name=staff_name,
-        #     appointment_date=date,
-        #     appointment_time=time
-        # ).first()
+        staff_name = request.form["staff_name"]
+        date = request.form["appointment_date"]
+        time = request.form["appointment_time"]
 
-        # if existing:
-        #     return "Staff is already booked at this time"
+        #  Check if staff is already booked
+
+        existing = Appointment.query.filter_by(
+            staff_name=staff_name,
+            appointment_date= date,
+            appointment_time= time
+        ).first()
+
+        if existing:
+            return render_template(
+                "appointment.html",
+                message="Staff is already booked at this time",
+                staffs=staffs,
+                services=services
+            )
 
         appointment = Appointment(
             customer_name=request.form["customer_name"],
             service_name=request.form["service_name"],
-            staff_name=  request.form["staff_name"],
-            appointment_date=date,
-            appointment_time=time
-         )
+            staff_name=staff_name,
+            appointment_date= date,
+            appointment_time= time
+        )
 
         db.session.add(appointment)
         db.session.commit()
 
-        return "Appointment Booked Successfully"
+        return render_template(
+            "appointment.html",
+            message="Appointment Booked Successfully",
+            staffs=staffs,
+            services=services
+        )
 
-        return render_template( "appointment.html",
-                                 staffs=staffs,
-                                services=services
-             )
+    return render_template(
+        "appointment.html",
+        staffs=staffs,
+        services=services
+    )
+        
 
 
 @app.route("/dashboard")

@@ -18,15 +18,21 @@
             <h2>📅 Book Appointment</h2>
             <p>Schedule your salon visit easily</p>
 
+            {% if message %}
+            <div class="message-box">
+                    {{ message }}
+            </div>       
+            {% endif %}
+
             <form action="/appointment" method="POST">
 
                 <label>Customer Name</label>
                 <input type="text" name="customer_name"
-                placeholder="Enter Customer Name" required>
+                placeholder="Enter Customer Name" required >
 
 
                 <label>Service</label>
-                <select name="service" required>
+                <select name="service_name" required>
                     <option>Select Service</option>
                     <option> Hair Styling</option>
                    <option> Facials & Clean-ups</option>
@@ -44,20 +50,20 @@
 
 
                 <label>Date</label>
-                <input type="date" name="date" required>
+                <input type="date" name="appointment_date" required>
 
 
                 <label>Time</label>
-                <input type="time" name="time" required>
+                <input type="time" name="appointment_time" required>
 
              <label class="mt-3">Staff Name</label>
-                 <select name="staff _name"  class="form-select"required>
+                 <select name="staff_name"  class="form-select"required>
                     <option value="">Select Staff</option>
-                    {% for staff in staffs% }
-                    <option value="{{ staff.name }}"> </option>
+                    {% for staff in staffs %}
+                    <option value="{{ staff.name }}"> {{ staff.name }}</option>
     
-                   {% endfor %}
-                  </select>
+                   {%  endfor  %}
+                 </select>
 
 
 
