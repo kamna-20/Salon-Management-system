@@ -29,7 +29,7 @@ class Staff(db.Model):
     name = db.Column(db.String(100), nullable=False)
     phone = db.Column(db.String(15))
     specialization = db.Column(db.String(100))
-    available = db.Column(db.String(10), default="Yes")
+    available = db.Column(db.String(10))
 
 
 class Appointment(db.Model):
@@ -39,4 +39,10 @@ class Appointment(db.Model):
     staff_name = db.Column(db.String(100), nullable=False)
     appointment_date = db.Column(db.String(20), nullable=False)
     appointment_time = db.Column(db.String(20), nullable=False)
-    
+
+class Payment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    customer_name = db.Column(db.String(100), nullable=False)
+    service = db.Column(db.String(100), nullable=False)
+    amount = db.Column(db.Integer, nullable=False)
+    payment_method = db.Column(db.String(50), nullable=False)

@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from models import db, User, Customer, Service, Staff, Appointment
+from models import db, User, Customer, Service, Staff, Appointment,Payment
 
 from dotenv import load_dotenv 
 import os
@@ -131,12 +131,15 @@ def staff():
 
 @app.route("/appointment", methods=["GET", "POST"])
 def appointment():
+         
+        staffs = Staff.query.all()
+        services = Service.query.all()
 
-    if request.method == "POST":
+        if request.method == "POST":
 
-        staff_name = request.form["staff_name"]
-        date = request.form["appointment_date"]
-        time = request.form["appointment_time"]
+       
+          date = request.form["appointment_date"]
+          time = request.form["appointment_time"]
 
         # # Check staff already booked or not
         # existing = Appointment.query.filter_by(
@@ -151,7 +154,7 @@ def appointment():
         appointment = Appointment(
             customer_name=request.form["customer_name"],
             service_name=request.form["service_name"],
-            staff_name= staff_name,
+            staff_name=  request.form["staff_name"],
             appointment_date=date,
             appointment_time=time
          )
@@ -160,8 +163,11 @@ def appointment():
         db.session.commit()
 
         return "Appointment Booked Successfully"
-    return render_template("appointment.html")
 
+        return render_template( "appointment.html",
+                                 staffs=staffs,
+                                services=services
+             )
 
 
 @app.route("/dashboard")
@@ -176,6 +182,57 @@ def dashboard():
          appointments=appointments
      )
 
+# @app.route('/payment', methods=['GET','POST'])
+# def payment():
+
+#     if request.method == "POST":
+
+#         customer_name = request.form.get("customer_name")
+#         service = request.form.get("service")
+#         amount = request.form.get("amount")
+#         payment_method = request.form.get("payment_method")
+
+#         new_payment = Payment(
+#             customer_name=customer_name,
+#             service=service,
+#             amount=amount,
+#             payment_method=payment_method
+#         )
+
+#         db.session.add(new_payment)
+#         db.session.commit()
+
+#         return redirect('/payment')
+
+#     return render_template("payment.html")
+
+
+@app.route('/payment', methods=['GET','POST'])
+def payment():
+
+    services = Service.query.all()
+
+    if request.method == "POST":
+
+        customer_name = request.form.get("customer_name")
+        service_id = request.form.get("service_id")
+        payment_method = request.form.get("payment_method")
+
+        selected_service = Service.query.get(service_id)
+
+        new_payment = Payment(
+            customer_name=customer_name,
+            service=selected_service.service_name,
+            amount=selected_service.price,
+            payment_method=payment_method
+        )
+
+        db.session.add(new_payment)
+        db.session.commit()
+
+        return redirect('/payment')
+
+    return render_template("payment.html", services=services)
 
 if __name__ == "__main__":
     app.run(debug=True)

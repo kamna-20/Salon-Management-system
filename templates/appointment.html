@@ -28,11 +28,19 @@
                 <label>Service</label>
                 <select name="service" required>
                     <option>Select Service</option>
-                    <option>Hair Cut</option>
-                    <option>Facial</option>
-                    <option>Hair Spa</option>
-                    <option>Makeup</option>
-                </select>
+                    <option> Hair Styling</option>
+                   <option> Facials & Clean-ups</option>
+                   <option> Threading</option>
+                   <option> Waxing</option>
+                   <option> Bleach</option>
+                   <option> Manicure & Pedicure</option>
+                   <option> Body polishing &Scrub</option>
+                   <option> Bridal & Party Makeup</option>
+                    <option> Nail Extension</option>
+                    <option> Hair Coloring</option>
+                    <option> Hair Treatments</option>
+
+                  </select>
 
 
                 <label>Date</label>
@@ -41,6 +49,16 @@
 
                 <label>Time</label>
                 <input type="time" name="time" required>
+
+             <label class="mt-3">Staff Name</label>
+                 <select name="staff _name"  class="form-select"required>
+                    <option value="">Select Staff</option>
+                    {% for staff in staffs% }
+                    <option value="{{ staff.name }}"> </option>
+    
+                   {% endfor %}
+                  </select>
+
 
 
                 <button type="submit">
