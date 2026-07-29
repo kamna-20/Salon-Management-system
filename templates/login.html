@@ -2,16 +2,16 @@
 
 {% block content %}
 
-
+<div class="login-cointainer">
     <div class="login-box">
         <h1> WELCOME</h1><br>
-        <h2>Glow & Grace Salon</h2><br>
-        <p> Login to manage your beauty services</p>
+        <h2 class="salon-title">GLOW & GRACE SALON</h2><br>
+        <p class=" salon-subtitle">Where Beauty Meets Elegance </p>
 
     <form action="/login" method="POST">
 
         <label>Email</label><br>
-        <input type="email" name="email"  value="     @gmail.com" required><br><br>
+        <input type="email" name="email"  value="@gmail.com" required><br><br>
 
         <label>Password</label><br>
         <input type="password" name="password" required><br><br>
@@ -20,8 +20,10 @@
 
     </form>
 
-    <br>
+    <div class="register-link">
 
-    <a href="/register"> Create New Account</a>
+         <a href="/register"> Create New Account</a>
+    </div>
+      </div>
 </div>
 {% endblock %}

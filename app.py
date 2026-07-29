@@ -184,14 +184,14 @@ def appointment():
 
 @app.route("/dashboard")
 def dashboard():
- customers = Customer.query.count()
- services = Service.query.count()
- appointments = Appointment.query.count()
+  total_customers = Customer.query.count()
+  total_services = Service.query.count()
+  total_appointments = Appointment.query.count()
 
- return render_template( "dashboard.html",
-         customers=customers,
-         services=services,
-         appointments=appointments
+  return render_template( "dashboard.html",
+        total_customers = total_customers,
+         total_services=total_services,
+         total_appointmentsappointments=total_appointments
      )
 
 # @app.route('/payment', methods=['GET','POST'])
