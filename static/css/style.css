@@ -736,3 +736,298 @@ body{
     transform:translateY(-3px);
     box-shadow:0 8px 20px rgba(214,51,132,0.4);
 }
+ .home-btn{
+    display: inline-block;
+    width: 250px;
+    padding: 12px;
+    margin:10px;
+    text-align: center;
+    background-color: #d63384;
+    color:white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 18px;
+}
+               /*---------  Customer book appointment -----------*/
+
+/* .booking-box{
+    width:450px;
+    margin:40px auto;
+    background:#ffffff;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.2);
+}
+
+.booking-box h1{
+    text-align:center;
+    color:#d63384;
+    margin-bottom:5px;
+}
+
+.booking-box p{
+    text-align:center;
+    color:gray;
+    margin-bottom:20px;
+}
+
+.booking-box label{
+    font-weight:bold;
+    margin-top:10px;
+    display:block;
+}
+
+.form-control{
+    width:100%;
+    padding:12px;
+    margin-top:6px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    font-size:16px;
+}
+
+.form-control:focus{
+    border:2px solid #d63384;
+    outline:none;
+}
+
+.book-btn{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    background:#5d5559;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+
+}
+
+.book-btn:hover{
+    background:#938c90;
+}
+
+.home-btn{
+    display:block;
+    text-align:center;
+    text-decoration:none;
+    background:#6c757d;
+    color:white;
+    padding:12px;
+    border-radius:10px;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 20px rgba(214,51,132,.5);
+    backdrop-filter:blur(10px);
+    border: 1px solid  rgba(255,255,255,.4)
+}
+
+.home-btn:hover{
+    background:#495057;
+}
+
+.success{
+    color:green;
+    font-weight:bold;
+    text-align:center;
+    
+} */
+
+/* Book Appointment */
+
+.booking-box{
+    max-width:650px;
+    margin:50px auto;
+    background:rgba(232, 198, 198, 0.95);
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+}
+
+.booking-box h1{
+    text-align:center;
+    color:#d63384;
+    font-size:40px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.booking-box p{
+    text-align:center;
+    color:#666;
+    margin-bottom:30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.booking-box label{
+    font-size:17px;
+    font-weight:bold;
+    color:#444;
+    margin-bottom:8px;
+    display:block;
+}
+
+.booking-box .form-control{
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    margin-bottom:20px;
+    font-size:16px;
+    transition:.3s;
+}
+
+.booking-box .form-control:focus{
+    border-color:#d63384;
+    box-shadow:0 0 10px rgba(214,51,132,.3);
+    outline:none;
+    background-color: peachpuff;
+}
+
+.btn-primary{
+    background:linear-gradient(45deg,#d63384,#ff6b9a);
+    border:none;
+    border-radius:12px;
+    padding:12px;
+    font-size:18px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 20px rgba(214,51,132,.4);
+}
+
+.btn-outline-dark{
+    border-radius:12px;
+    font-size:18px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn-outline-dark:hover{
+    background:#222;
+    color:white;
+}
+
+.alert-success{
+    border-radius:12px;
+    text-align:center;
+    font-weight:bold;
+}
+
+body{
+    background:linear-gradient(135deg,#705e64,#fff5f8);
+}
+               /* Index page*/
+
+
+.hero-section{
+    height:90vh;
+    background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+    url("https://images.unsplash.com/photo-1560066984-138dadb4c035");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+.hero-content{
+    width: 150%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.button-group{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+.button-group a{
+    min-width: 230px;
+}
+
+.hero-content h1{
+    color:white;
+    font-size:60px;
+    font-weight:bold;
+}
+
+.hero-content p{
+    color:white;
+    font-size:22px;
+    margin-bottom:30px;
+}
+
+.btn-pink{
+    background:#ff4f8b;
+    color:white;
+    margin:10px;
+    padding:12px 30px;
+    border-radius:30px;
+}
+
+.btn-pink:hover{
+    background:#e63b78;
+    color:white;
+}
+
+.services{
+    background:linear-gradient(135deg,#ead5dd,#c3c0c1);
+    padding:80px 30px;
+    text-align:center;
+
+}
+.services h2{
+    font-size: 40px;
+    color: #555;
+    margin-bottom: 50px ;
+
+}
+.services p{
+    color: #555;
+    font-size: 18px;
+    margin-bottom: 50px;
+}
+.service-box{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+.card{
+    width: 300px;
+    padding:30px;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 12px 30px rgba(0,0,0,.15);
+    transition: 0.4s;
+
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow: 0 20px 40px rgba(214,51,132,.35)
+}
+.card h3{
+    color:#d63384;
+    margin-bottom: 15px;
+
+}
+.card p{
+    color:#666;
+}
+
+body{
+    background:#f58ebf;
+}

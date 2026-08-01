@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 from models import db, User, Customer, Service, Staff, Appointment,Payment
 
 from dotenv import load_dotenv 
@@ -6,6 +6,7 @@ import os
 load_dotenv()
 
 app = Flask(__name__)
+app.secret_key = "salon123"
 
 
 
@@ -20,13 +21,16 @@ db.init_app(app)
 with app.app_context():
     db.create_all()
 
-@app.route("/routes")
+# @app.route("/routes")
+# def home():
+#     return  render_template("index.html")
+
+# @app.route("/")
+# def routes():
+#     return  redirect(url_for('login'))
+@app.route("/")
 def home():
     return  render_template("index.html")
-
-@app.route("/")
-def routes():
-    return  redirect(url_for('login'))
 
 @app.route("/register",
 methods=["GET", "POST"])
@@ -66,6 +70,7 @@ def login():
         ).first()
 
         if user:
+            session["logged_in"]=True
             return redirect(url_for("dashboard"))
         else:
             return "Invalid Email or Password"
@@ -128,6 +133,10 @@ def staff():
         return  redirect(url_for("staff"))
       return render_template("staff.html")
 
+
+
+from datetime import datetime, date
+
 @app.route("/appointment", methods=["GET", "POST"])
 def appointment():
 
@@ -136,32 +145,48 @@ def appointment():
 
     if request.method == "POST":
 
+        customer_name = request.form["customer_name"]
+        service_name = request.form["service_name"]
         staff_name = request.form["staff_name"]
-        date = request.form["appointment_date"]
-        time = request.form["appointment_time"]
+        appointment_date = request.form["appointment_date"]
+        appointment_time = request.form["appointment_time"]
 
-        #  Check if staff is already booked
+        # Check past date
+        selected_date = datetime.strptime(
+            appointment_date, "%Y-%m-%d"
+        ).date()
 
+        if selected_date < date.today():
+            return render_template(
+                "appointment.html",
+                message="Past date is not allowed.",
+                staffs=staffs,
+                services=services,
+                today=date.today()
+            )
+
+        # Check if staff is already booked
         existing = Appointment.query.filter_by(
             staff_name=staff_name,
-            appointment_date= date,
-            appointment_time= time
+            appointment_date=appointment_date,
+            appointment_time=appointment_time
         ).first()
 
         if existing:
             return render_template(
                 "appointment.html",
-                message="Staff is already booked at this time",
+                message="Staff is already booked at this time.",
                 staffs=staffs,
-                services=services
+                services=services,
+                today=date.today()
             )
 
         appointment = Appointment(
-            customer_name=request.form["customer_name"],
-            service_name=request.form["service_name"],
+            customer_name=customer_name,
+            service_name=service_name,
             staff_name=staff_name,
-            appointment_date= date,
-            appointment_time= time
+            appointment_date=appointment_date,
+            appointment_time=appointment_time
         )
 
         db.session.add(appointment)
@@ -169,21 +194,26 @@ def appointment():
 
         return render_template(
             "appointment.html",
-            message="Appointment Booked Successfully",
+            message="Appointment Booked Successfully.",
             staffs=staffs,
-            services=services
+            services=services,
+            today=date.today()
         )
 
     return render_template(
         "appointment.html",
         staffs=staffs,
-        services=services
+        services=services,
+        today=date.today()
     )
         
 
 
 @app.route("/dashboard")
 def dashboard():
+  if"logged_in"not in session:
+      return redirect(url_for("login"))
+  
   total_customers = Customer.query.count()
   total_services = Service.query.count()
   total_appointments = Appointment.query.count()
@@ -191,32 +221,9 @@ def dashboard():
   return render_template( "dashboard.html",
         total_customers = total_customers,
          total_services=total_services,
-         total_appointmentsappointments=total_appointments
+         total_appointments=total_appointments
      )
 
-# @app.route('/payment', methods=['GET','POST'])
-# def payment():
-
-#     if request.method == "POST":
-
-#         customer_name = request.form.get("customer_name")
-#         service = request.form.get("service")
-#         amount = request.form.get("amount")
-#         payment_method = request.form.get("payment_method")
-
-#         new_payment = Payment(
-#             customer_name=customer_name,
-#             service=service,
-#             amount=amount,
-#             payment_method=payment_method
-#         )
-
-#         db.session.add(new_payment)
-#         db.session.commit()
-
-#         return redirect('/payment')
-
-#     return render_template("payment.html")
 
 
 @app.route('/payment', methods=['GET','POST'])
@@ -245,6 +252,81 @@ def payment():
         return redirect('/payment')
 
     return render_template("payment.html", services=services)
+
+
+
+
+from datetime import datetime, date
+
+@app.route("/book_appointment", methods=["GET", "POST"])
+def book_appointment():
+
+    staffs = Staff.query.all()
+    services = Service.query.all()
+
+    if request.method == "POST":
+
+        customer_name = request.form["customer_name"]
+        service_name = request.form["service_name"]
+        staff_name = request.form["staff_name"]
+        appointment_date = request.form["appointment_date"]
+        appointment_time = request.form["appointment_time"]
+
+        # Past date check
+        selected_date = datetime.strptime(
+            appointment_date, "%Y-%m-%d"
+        ).date()
+
+        if selected_date < date.today():
+            return render_template(
+                "book_appointment.html",
+                message="Past date is not allowed.",
+                staffs=staffs,
+                services=services,
+                today=date.today()
+            )
+
+        # Staff already booked check
+        existing = Appointment.query.filter_by(
+            staff_name=staff_name,
+            appointment_date=appointment_date,
+            appointment_time=appointment_time
+        ).first()
+
+        if existing:
+            return render_template(
+                "book_appointment.html",
+                message="Staff is already booked at this time.",
+                staffs=staffs,
+                services=services,
+                today=date.today()
+            )
+
+        appointment = Appointment(
+            customer_name=customer_name,
+            service_name=service_name,
+            staff_name=staff_name,
+            appointment_date=appointment_date,
+            appointment_time=appointment_time
+        )
+
+        db.session.add(appointment)
+        db.session.commit()
+
+        return render_template(
+            "book_appointment.html",
+            message="Appointment Booked Successfully.",
+            staffs=staffs,
+            services=services,
+            today=date.today()
+        )
+
+    return render_template(
+        "book_appointment.html",
+        staffs=staffs,
+        services=services,
+        today=date.today()
+    )
 
 if __name__ == "__main__":
     app.run(debug=True)

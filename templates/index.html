@@ -1,22 +1,52 @@
+
 {% extends "base.html" %}
 
 {% block content %}
 
+<div class="hero-section">
 
-    <h1> Glow & Grace Salon </h1>
+    <div class="hero-content">
+        <h1>Glow & Grace Salon</h1>
+        <p>Look Beautiful, Feel Confident ✨</p>
 
-    <hr>
+        <a href="/book_appointment" class="home-btn btn-dark btn-lg">📅 Book Appointment</a>
 
-    <a href="/register" class="btn">Register</a><br><br>
+        <a href="/login" class=" home-btn btn-dark btn-lg">🔐 Admin Login</a>
 
-    <a href="/login" class="btn">Login</a><br><br>
+        <a href="/register" class=" home-btn btn-outline-light btn-lg">📝 Register</a>
+    </div>
 
-    <a href="/customer"class="btn">Customer</a><br><br>
+</div>
 
-    <a href="/service"class="btn">Service</a><br><br>
 
-    <a href="/appointment"class="btn">Appointment</a><br><br>
+     <section class="services"></section>
 
-    <a href="/dashboard"class="btn">Dashboard</a>
+     <h2 >Our Services</h2>
+     <p> Experience luxury beauty treatments by our proffesional experts.</p>
+
+
+    <div class="service-box">
+
+        <div class="card">
+          
+                <h3>💇 Hair Styling</h3>
+                <p>Professional haircut and hairstyling by experienced experts.</p>
+            </div>
+        
+
+       
+            <div class="card">
+                <h3>💆 Facial</h3>
+                <p>Glowing skin treatments with premium products.</p>
+            </div>
+        
+
+        
+            <div class="card">
+                <h4>💅 Nail Care</h4>
+                <p>Beautiful manicure and pedicure services.</p>
+            </div>
+        </div>
+     </section>
 
 {% endblock %}
