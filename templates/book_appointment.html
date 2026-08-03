@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="booking-page">
 <div class="booking-box">
 
 <h1 class="text-center mb-2">Book Your Appointment</h1>
@@ -7,7 +8,6 @@
 
 {% if message %}
 <p class=" alert alert-success">{{ message }}></p>
-</div>
 {% endif %}
 
 <form method="POST">
@@ -46,6 +46,7 @@
 <br>
 
 <a href="/" class=" btn btn-outline dark btn-lg w-100 mt-3"> Back to Home </a>
+</div>
 </div>
 
 {% endblock %}

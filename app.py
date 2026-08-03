@@ -21,13 +21,7 @@ db.init_app(app)
 with app.app_context():
     db.create_all()
 
-# @app.route("/routes")
-# def home():
-#     return  render_template("index.html")
 
-# @app.route("/")
-# def routes():
-#     return  redirect(url_for('login'))
 @app.route("/")
 def home():
     return  render_template("index.html")
