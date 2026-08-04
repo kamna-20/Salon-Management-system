@@ -60,7 +60,9 @@
                  <select name="staff_name"  class="form-select"required>
                     <option value="">Select Staff</option>
                     {% for staff in staffs %}
-                    <option value="{{ staff.name }}"> {{ staff.name }}</option>
+                    <option value="{{ staff.name }}"> {{ staff.name }}
+                        ({{ staff.specialization }})
+                    </option>
     
                    {%  endfor  %}
                  </select>

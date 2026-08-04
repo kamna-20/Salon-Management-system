@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2 class="text-center mb-4">All Appointments</h2>
+
+    <table class="table table-bordered table-striped">
+
+        <thead class="table-dark">
+            <tr>
+                <th>Customer</th>
+                <th>Service</th>
+                <th>Staff</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        {% for appointment in appointment %}
+
+        <tr>
+
+            <td>{{ appointment.customer_name }}</td>
+            <td>{{ appointment.service_name }}</td>
+            <td>{{ appointment.staff_name }}</td>
+            <td>{{ appointment.appointment_date }}</td>
+            <td>{{ appointment.appointment_time }}</td>
+
+            <td>
+
+                <a href="/edit_appointment/{{ appointment.id }}"
+                   class="btn btn-warning btn-sm">
+                    Edit
+                </a>
+
+                <a href="/delete_appointment/{{ appointment.id }}"
+                   class="btn btn-danger btn-sm">
+                    Delete
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

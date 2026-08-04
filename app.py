@@ -96,7 +96,7 @@ def service():
     if request.method == "POST":
 
         service = Service(
-            service_name=request.form["service"],
+            service_name=request.form["service_name"],
             price=request.form["price"],
             duration=request.form["duration"]
         )
@@ -120,7 +120,7 @@ def staff():
             specialization=request.form["specialization"],
             available=request.form["available"]
         )
-
+        
         db.session.add(staff)
         db.session.commit()
 
@@ -321,6 +321,39 @@ def book_appointment():
         services=services,
         today=date.today()
     )
+
+
+
+@app.route('/view_appointment')
+def view_appointment():
+    appointment = Appointment.query.all()
+    return render_template("view_appointment.html", appointment=appointment)
+
+
+@app.route("/delete_appointment/<int:id>")
+def delete_appointment(id):
+    appointment = Appointment.query.get_or_404(id)
+    db.session.delete(appointment)
+    db.session.commit()
+    return redirect("/view_appointment")
+
+
+
+@app.route("/edit_appointment/<int:id>", methods=["GET", "POST"])
+def edit_appointment(id):
+    appointment = Appointment.query.get_or_404(id)
+
+    if request.method == "POST":
+        appointment.customer_name = request.form["customer_name"]
+        appointment.service_name = request.form["service_name"]
+        appointment.staff_name = request.form["staff_name"]
+        appointment.appointment_date = request.form["appointment_date"]
+        appointment.appointment_time = request.form["appointment_time"]
+
+        db.session.commit()
+        return redirect("/view_appointment")
+
+    return render_template("edit_appointment.html", appointment=appointment)
 
 if __name__ == "__main__":
     app.run(debug=True)
