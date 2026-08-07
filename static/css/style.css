@@ -425,7 +425,7 @@ body{
     background:linear-gradient(135deg,#c2185b,#e91e63);
 }
 body{
-    background:linear-gradient(135deg,#fff0f5,#ffe4ec);
+    background:linear-gradient(135deg,#f5ecef,#f9d7e1);
     font-family:'Poppins',sans-serif;
 }
 
@@ -433,15 +433,30 @@ body{
 
 .service-card{
     background:#fff;
-    border-radius:20px;
+    border-radius:50px;
     overflow:hidden;
     box-shadow:0 10px 30px rgba(0,0,0,0.15);
 }
+.service-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    width: 95%;
+    margin: auto;
+}
+ .services-image{
+    width:50%;
 
-.image-section img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+}
+.services-image img{
+    width: 100%;
+    height: 550px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+.service-form{
+    width: 45%;
 }
 
 .service-banner{
@@ -455,7 +470,8 @@ body{
 .service-banner h2{
     font-size:28px;
     font-weight:bold;
-    margin-bottom: 5px;
+   margin-bottom: 5px;
+
 }
 
 .service-banner p{
@@ -467,6 +483,7 @@ body{
 .service-card h2{
     color:#d63384;
     font-weight:bold;
+    text-align: center;
 }
 
 .service-card label{
@@ -476,9 +493,9 @@ body{
 
 .form-control,
 .form-select{
-    border-radius:12px;
-    border:2px solid #f3c4d6;
-    padding:12px;
+    border-radius:34px;
+    border:6px solid #bd205c;
+    padding:32px;
 }
 
 .form-control:focus,
@@ -516,6 +533,7 @@ body{
 .service-card h2{
     color:#d63384;
     font-weight:700;
+    text-align: center;
 }
 
 .service-card label{

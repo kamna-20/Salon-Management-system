@@ -23,5 +23,31 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> -->
 
 
+<script>
+const service = document.getElementById("service");
+const staff = document.getElementById("staff");
+
+service.addEventListener("change", function () {
+
+    let selectedService = this.value;
+
+    for (let option of staff.options) {
+
+        if (option.value === "") {
+            option.hidden = false;
+            continue;
+        }
+
+        if (option.dataset.specialization === selectedService) {
+            option.hidden = false;
+        } else {
+            option.hidden = true;
+        }
+    }
+
+    staff.value = "";
+});
+</script>
+
 </body>
 </html>

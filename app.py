@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask,jsonify, render_template, request, redirect, url_for, session
 from models import db, User, Customer, Service, Staff, Appointment,Payment
 
 from dotenv import load_dotenv 
@@ -354,6 +354,14 @@ def edit_appointment(id):
         return redirect("/view_appointment")
 
     return render_template("edit_appointment.html", appointment=appointment)
+
+@app.route("/get_staff/<service_name>")
+def get_staff(service_name):
+    staff_list = staff.query.filter_by(Specialization=service_name).all()
+    result = []
+    for staff in staff_list: result.append({"name:staff.name"})
+    return jsonify(result)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

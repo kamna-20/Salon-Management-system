@@ -2,40 +2,37 @@
 
 {% block content %}
 
-<div class="container mt-5">
-    <div class="row service-card">
-        <div class="col-md-6 image-section">
+<div class="service-container">
 
-    <div class="service-banner text-center">
-        <h2>✨ Premium Salon Services ✨</h2><br><br>
-        <p>Enhance Beauty with Professional Care</p>
+    <div class="services-image">
+        <img src="{{ url_for('static', filename='images/services.jpg') }}">
     </div>
+<div class="service-banner text-center">
+    <h2> Premium Salon Services</h2>
 
-</div>  
+    <div class="service-form">
 
-        <div class="col-md-6 p-5">
+        <h2 class="text-center mb-4">💇 Add Service</h2>
 
-            <h2 class="text-center mb-4">💇 Add Service</h2>
+        <form action="/service" method="POST">
 
+            <label>Service Name</label>
+            <input type="text" name="service_name" class="form-control" required><br>
 
-<form action="/service" method="POST">
+            <label>Price</label>
+            <input type="number" name="price" class="form-control" required><br>
 
-    <label>Service Name</label><br>
-    <input type="text" name="service_name" class="form-control" required 
-    
-    <label> Price </label><br>
-    <input type="number" name="price" class="form-control" required><br><br>
+            <label>Duration</label>
+            <input type="text" name="duration" class="form-control" placeholder="30 Minutes" required><br>
 
-    <label>Duration</label><br>
-    <input type="text" name="duration" class="form-control "placeholder="30 Minutes" required><br><br>
-
-<br><br>
-<button type="submit" class="btn btn-service w-100">
+            <button type="submit" class="btn btn-service w-100">
                 Save Service
             </button>
-</form>
-        </div>
+
+        </form>
 
     </div>
+
 </div>
+
 {% endblock %}

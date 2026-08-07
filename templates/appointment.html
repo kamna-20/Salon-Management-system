@@ -3,7 +3,7 @@
 {% block content %}
 
 
-<div class="container mt-5">
+<div class="container-fluid mt-5">
 
     <div class="appointment-box">
 
@@ -32,9 +32,14 @@
 
 
                 <label>Service</label>
-                <select name="service_name" required>
-                    <option>Select Service</option>
-                    <option> Hair Styling</option>
+                <select name="service_name" id="service" class="form-" required>
+                    <option value="">Select Service</option>
+                    {%  for service in services  %}
+                    <option value="{{ service.service_name  }}">
+                        {{  service.service_name }}
+                    </option>
+                    
+                    <!-- <option> Hair Styling</option>
                    <option> Facials & Clean-ups</option>
                    <option> Threading</option>
                    <option> Waxing</option>
@@ -44,8 +49,8 @@
                    <option> Bridal & Party Makeup</option>
                     <option> Nail Extension</option>
                     <option> Hair Coloring</option>
-                    <option> Hair Treatments</option>
-
+                    <option> Hair Treatments</option> -->
+                  {%  endfor %}
                   </select>
 
 
@@ -57,11 +62,12 @@
                 <input type="time" name="appointment_time" required>
 
              <label class="mt-3">Staff Name</label>
-                 <select name="staff_name"  class="form-select"required>
+                 <select name="staff_name"  id="staff" class="form-select"required>
                     <option value="">Select Staff</option>
                     {% for staff in staffs %}
-                    <option value="{{ staff.name }}"> {{ staff.name }}
-                        ({{ staff.specialization }})
+                    <option value="{{ staff.name }}" data-specialization="{{ staff.specialization}}">
+                          {{ staff.name }}
+                          ({{ staff.specialization }})
                     </option>
     
                    {%  endfor  %}
