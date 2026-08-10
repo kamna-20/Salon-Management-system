@@ -15,8 +15,21 @@
     <label>Customer Name</label><br>
     <input type="text" name="customer_name" class="form-control" required><br><br>
 
+
+
+    <label> Customer Gender</label><br>
+    <select name="customer_gender"
+            id="customer_gender"
+            class="form-control" required>
+            <option value="" disabled selected>Select Gender</option>
+            <option value="Male"> Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <br><br>
+
     <label>Service</label><br>
     <select name="service_name" class="form-control" required>
+        <option value="" disabled selected> Select Services</option>
         {% for service in services %}
         <option value="{{ service.service_name }}">
             {{ service.service_name }}
@@ -26,9 +39,10 @@
 
     <label>Staff</label><br>
     <select name="staff_name"  class="form-control" required>
+         <option value="" disabled selected> Select Staff</option>
         {% for staff in staffs %}
         <option value="{{ staff.name }}">
-            {{ staff.name }}
+            {{ staff.name }} - {{ staff.specialization }}
         </option>
         {% endfor %}
     </select><br><br>
@@ -49,4 +63,8 @@
 </div>
 </div>
 
+
+
+
 {% endblock %}
+

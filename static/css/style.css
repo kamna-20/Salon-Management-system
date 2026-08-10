@@ -381,29 +381,51 @@ body{
     background:linear-gradient(135deg,#fb9fc4,#fff5f8);
     font-family:'Poppins',sans-serif;
 }
+/* Customer page */
 
-.customer-card{
-    max-width:900px;
-    width:100%;
-    margin:auto;
+.customer-box{
+    max-width:1200px;
+    width:90%;
+    min-height: 550px;
+    margin: 40px auto;
     background:#deb1b1;
     padding:35px;
     border-radius:20px;
     box-shadow:0 10px 30px rgba(214,51,132,.2);
+    overflow: hidden;
+    display: flex;
+}
+.customer-image{
+    width: 45%;
+}
+.customer-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.customer-form{
+    width: 55%;
+    padding: 45px;
 }
 
-.customer-card h2{
+.customer-form h2{
     color:#d63384;
     font-weight:bold;
+    margin-bottom: 10px;
+}
+.customer-form p{
+    margin-bottom: 30px;
 }
 
-.form-control{
+.customer-form .form-control{
     border-radius:12px;
     padding:12px;
     border:1px solid #ddd;
+    margin-bottom: 18px;
 }
 
-.form-control:focus{
+ .customer-form .form-control:focus{
     border-color:#d63384;
     box-shadow:0 0 10px rgba(214,51,132,.3);
 }
@@ -431,7 +453,7 @@ body{
 
 /* ---------- Service Page ---------- */
 
-.service-card{
+.service-container{
     background:#fff;
     border-radius:50px;
     overflow:hidden;
@@ -439,36 +461,46 @@ body{
 }
 .service-container{
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
     gap: 40px;
     width: 95%;
-    margin: auto;
+    margin: 40px auto;
+    max-width: 1200px;
+    min-height: 600px;
+
 }
  .services-image{
     width:50%;
 
+}
+.service-content{
+    width: 50%;
+    background: #fff;
+    border-radius: 20px;
+    padding: 35px 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.15);
 }
 .services-image img{
     width: 100%;
     height: 550px;
     object-fit: cover;
     border-radius: 15px;
+    display: block;
 }
 .service-form{
     width: 45%;
 }
 
 .service-banner{
-    position:relative;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
     color:#d63384;
     background: #fff;
 }
 
 .service-banner h2{
-    font-size:28px;
+    font-size:30px;
     font-weight:bold;
    margin-bottom: 5px;
 
@@ -479,16 +511,22 @@ body{
     color:#de8e8e;
     font-weight: bold;
 }
+.service-form{
+    width: 100%;
+    padding: 10px 5px;
+}
 
-.service-card h2{
+.service-form h2{
     color:#d63384;
     font-weight:bold;
     text-align: center;
+    margin-bottom: 25px;
 }
 
-.service-card label{
+.service-form label{
     font-weight:600;
     margin-bottom:5px;
+    display: block;
 }
 
 .form-control,
@@ -496,6 +534,8 @@ body{
     border-radius:34px;
     border:6px solid #bd205c;
     padding:32px;
+    margin-bottom: 18px;
+    width: 100%;
 }
 
 .form-control:focus,
@@ -518,6 +558,23 @@ body{
 .btn-service:hover{
     transform:translateY(-3px);
     box-shadow:0 8px 20px rgba(214,51,132,0.4);
+}
+@media (max-width: 768px){
+    .service-container{
+        width: 95%;
+        display: block;
+    }
+    .services-image{
+        width: 100%;
+    }
+    .services-image img{
+        height: 300px;
+        margin-bottom: 20px;
+    }
+    .service-content{
+        width: 100%;
+        padding:25px 20px;
+    }
 }
 /* ---------- Add Staff Page ---------- */
 
@@ -874,8 +931,8 @@ html,body{
 
 
 .booking-box{
-    max-width:700px;
-    background:rgba(130, 129, 129, 0.95);
+    max-width:500px;
+    background:rgba(184, 182, 182, 0.95);
     padding:40px;
     border-radius:25px;
     box-shadow:0 10px 30px rgba(0,0,0,0.3);
@@ -929,7 +986,9 @@ h1{
     border-color:#d63384;
     box-shadow:0 0 10px rgba(214,51,132,.3);
     outline:none;
-    background-color: rgb(150, 150, 149);
+    background-color: rgb(207, 207, 204);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
 }
 
 .btn-primary{
@@ -954,11 +1013,12 @@ h1{
     font-weight:bold;
     transition:.3s;
     width: 100%;
+
 }
 
 .btn-outline-dark:hover{
-    background:#222;
-    color:white;
+    background:#653e3e;
+    color:rgb(144, 139, 139);
 }
 
 .alert-success{

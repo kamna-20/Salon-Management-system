@@ -27,14 +27,16 @@ class Service(db.Model):
 class Staff(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
-    phone = db.Column(db.String(15))
+    phone = db.Column(db.String(15), nullable=False)
+    gender = db.Column(db.String(10), nullable=True)
     specialization = db.Column(db.String(100), nullable=False)
-    available = db.Column(db.String(10))
+    available = db.Column(db.String(10),nullable=False)
 
 
 class Appointment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     customer_name = db.Column(db.String(100), nullable=False)
+    customer_gender = db.Column(db.String(10), nullable=True)
     service_name = db.Column(db.String(100), nullable=False)
     staff_name = db.Column(db.String(100), nullable=False)
     appointment_date = db.Column(db.String(20), nullable=False)

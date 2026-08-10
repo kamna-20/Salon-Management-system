@@ -31,25 +31,25 @@
                 placeholder="Enter Customer Name" required >
 
 
+                <label> Customer Gender</label><br>
+    <select name="customer_gender"
+            id="customer_gender"
+            class="form-control" required>
+            <option value="" disabled selected>Select Gender</option>
+            <option value="Male"> Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <br><br>
+
+
                 <label>Service</label>
-                <select name="service_name" id="service" class="form-" required>
+                <select name="service_name" id="service" class="form-select" required>
                     <option value="">Select Service</option>
                     {%  for service in services  %}
                     <option value="{{ service.service_name  }}">
                         {{  service.service_name }}
                     </option>
                     
-                    <!-- <option> Hair Styling</option>
-                   <option> Facials & Clean-ups</option>
-                   <option> Threading</option>
-                   <option> Waxing</option>
-                   <option> Bleach</option>
-                   <option> Manicure & Pedicure</option>
-                   <option> Body polishing &Scrub</option>
-                   <option> Bridal & Party Makeup</option>
-                    <option> Nail Extension</option>
-                    <option> Hair Coloring</option>
-                    <option> Hair Treatments</option> -->
                   {%  endfor %}
                   </select>
 
@@ -62,10 +62,10 @@
                 <input type="time" name="appointment_time" required>
 
              <label class="mt-3">Staff Name</label>
-                 <select name="staff_name"  id="staff" class="form-select"required>
+                 <select name="staff_name"  id="staff_name" class="form-select"required>
                     <option value="">Select Staff</option>
                     {% for staff in staffs %}
-                    <option value="{{ staff.name }}" data-specialization="{{ staff.specialization}}">
+                    <option value="{{ staff.name }}" data-specialization="{{ staff.specialization}}" data-gender="{{ staff.gender }}">
                           {{ staff.name }}
                           ({{ staff.specialization }})
                     </option>
@@ -87,4 +87,6 @@
 
 </div>
 
+
 {% endblock %}
+

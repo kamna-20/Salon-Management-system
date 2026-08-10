@@ -21,6 +21,24 @@ db.init_app(app)
 with app.app_context():
     db.create_all()
 
+    from sqlalchemy import text
+
+    try:
+        db.session.execute(text(
+            "ALTER TABLE staff ADD COLUMN gender VARCHAR(10)"
+        ))
+        db.session.commit()
+    except:
+        db.session.rollback()
+
+    try:
+        db.session.execute(text(
+            "ALTER TABLE appointment ADD COLUMN customer_gender VARCHAR(10)"
+        ))
+        db.session.commit()
+    except:
+        db.session.rollback()
+
 
 @app.route("/")
 def home():
@@ -117,6 +135,7 @@ def staff():
         staff = Staff(
             name=request.form["name"],
             phone=request.form["phone"],
+            gender=request.form["gender"],
             specialization=request.form["specialization"],
             available=request.form["available"]
         )
@@ -140,10 +159,35 @@ def appointment():
     if request.method == "POST":
 
         customer_name = request.form["customer_name"]
+        customer_gender = request.form["customer_gender"]
         service_name = request.form["service_name"]
         staff_name = request.form["staff_name"]
         appointment_date = request.form["appointment_date"]
         appointment_time = request.form["appointment_time"]
+
+        # Find selected staff
+        selected_staff = Staff.query.filter_by(name=staff_name).first()
+
+        if not selected_staff:
+            return render_template(
+                "appointment.html",
+                message="Staff not found.",
+                staffs=staffs,
+                services=services,
+                today=date.today()
+            )
+
+        # Gender check for selected services
+        if service_name in ["Body Massage", "Pedicure"]:
+
+            if selected_staff.gender != customer_gender:
+                return render_template(
+                    "appointment.html",
+                    message="For this service, staff gender must match customer gender.",
+                    staffs=staffs,
+                    services=services,
+                    today=date.today()
+                )
 
         # Check past date
         selected_date = datetime.strptime(
@@ -175,6 +219,7 @@ def appointment():
                 today=date.today()
             )
 
+        # Create appointment
         appointment = Appointment(
             customer_name=customer_name,
             service_name=service_name,
@@ -194,13 +239,13 @@ def appointment():
             today=date.today()
         )
 
+    # GET request
     return render_template(
         "appointment.html",
         staffs=staffs,
         services=services,
         today=date.today()
-    )
-        
+    )        
 
 
 @app.route("/dashboard")
@@ -261,12 +306,29 @@ def book_appointment():
     if request.method == "POST":
 
         customer_name = request.form["customer_name"]
+        customer_gender = request.form["customer_gender"]
         service_name = request.form["service_name"]
         staff_name = request.form["staff_name"]
         appointment_date = request.form["appointment_date"]
         appointment_time = request.form["appointment_time"]
 
-        # Past date check
+
+        # Gender filtering for selected services#
+
+        if service_name in ["Body Massage","Pedicure"]:
+            selected_staff = Staff.query.filter_by(name=staff_name).first()
+            if not selected_staff:return render_template("book_appointment.html", 
+                                                         message="Staff not found.",
+                                                           staffs=staffs,
+                                                           services=services,today=date.today())
+            if selected_staff.gender!= customer_gender:
+              return render_template("book_appointment.html",
+                               message="For this services,staff gender must match customer gender.",
+                               staffs=staffs,
+                               services=services,
+                               today=date.today())
+
+        # Past date check#
         selected_date = datetime.strptime(
             appointment_date, "%Y-%m-%d"
         ).date()
@@ -280,7 +342,8 @@ def book_appointment():
                 today=date.today()
             )
 
-        # Staff already booked check
+        # Staff already booked check#
+
         existing = Appointment.query.filter_by(
             staff_name=staff_name,
             appointment_date=appointment_date,

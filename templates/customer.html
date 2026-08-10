@@ -3,7 +3,7 @@
 {% block content %}
 
 
-<div class="container mt-5">
+<div class="container fluid mt-5">
 
     <div class="customer-box">
 
@@ -19,17 +19,17 @@
 
             <form action="/customer" method="POST">
 
-                <input type="text" name="name"
+                <input type="text" name="name" class="form-control"
                 placeholder="Customer Name" required>
 
-                <input type="text" name="phone"
+                <input type="text" name="phone" class="form-control"
                 placeholder="Phone Number" required>
 
-                <textarea name="address"
+                <textarea name="address" class="form-control"
                 placeholder="Address"></textarea>
 
                 <label> Gender </label>
-                <select name="gender" required>
+                <select name="gender"  class="form-control" required>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                   </select><br><br>
