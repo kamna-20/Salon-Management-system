@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <!-- Staff Header -->
+    <div class="staff-header">
+        <div>
+            <h2>👩‍💼 Welcome, {{ staff.name }}</h2>
+            <p>Specialization: {{ staff.specialization }}</p>
+        </div>
+
+        <div class="today-box">
+            📅 Today
+            <strong>{{ appointments|length }}</strong>
+            Appointments
+        </div>
+    </div>
+
+
+    <!-- Today's Appointments -->
+    <div class="dashboard-card mt-4">
+
+        <h4>📅 Today's Appointments</h4>
+
+        {% if appointments %}
+
+        <div class="table-responsive mt-3">
+
+            <table class="table table-bordered">
+
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Service</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for appointment in appointments %}
+
+                    <tr>
+
+                        <td>{{ appointment.customer_name }}</td>
+
+                        <td>{{ appointment.service_name }}</td>
+
+                        <td>{{ appointment.appointment_time }}</td>
+
+                        <td>
+                            <span class="status-badge">
+                                Booked
+                            </span>
+                        </td>
+
+                        <td>
+                            <button class="complete-btn"
+                                    onclick="this.innerHTML='✓ Completed'; this.disabled=true;">
+                                Complete
+                            </button>
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        {% else %}
+
+        <div class="no-appointment">
+            📭 No appointments for today.
+        </div>
+
+        {% endif %}
+
+    </div>
+
+
+
+
+<!-- My Appointments -->
+<div class="dashboard-card mt-4">
+
+    <h4>📋 My Appointments</h4>
+
+    {% if my_appointments %}
+
+    <div class="table-responsive mt-3">
+
+        <table class="table table-bordered">
+
+            <thead>
+                <tr>
+                    <th>Customer</th>
+                    <th>Service</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for appointment in my_appointments %}
+
+                <tr>
+                    <td>{{ appointment.customer_name }}</td>
+                    <td>{{ appointment.service_name }}</td>
+                    <td>{{ appointment.appointment_date }}</td>
+                    <td>{{ appointment.appointment_time }}</td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    {% else %}
+
+    <div class="no-appointment">
+        📭 No appointments found.
+    </div>
+
+    {% endif %}
+
+   </div>
+</div>
+{% endblock %}

@@ -1188,3 +1188,70 @@ body{
 .update-btn:hover{
     background:#b82c70;
 }
+
+.staff-header {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.staff-header h2 {
+    margin-bottom: 8px;
+}
+
+.staff-header p {
+    margin: 0;
+    color: #777;
+}
+
+.today-box {
+    background: #f8eaf0;
+    padding: 15px 22px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.today-box strong {
+    display: block;
+    font-size: 25px;
+    margin: 5px;
+}
+
+.dashboard-card {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.status-badge {
+    background: #fff3cd;
+    color: #856404;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+.complete-btn {
+    border: none;
+    background: #198754;
+    color: white;
+    padding: 7px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.complete-btn:disabled {
+    background: #6c757d;
+    cursor: default;
+}
+
+.no-appointment {
+    text-align: center;
+    padding: 30px;
+    color: #777;
+}

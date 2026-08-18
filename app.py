@@ -257,10 +257,12 @@ def dashboard():
   total_services = Service.query.count()
   total_appointments = Appointment.query.count()
 
+  staff_members = Staff.query.all()
   return render_template( "dashboard.html",
         total_customers = total_customers,
          total_services=total_services,
-         total_appointments=total_appointments
+         total_appointments=total_appointments,
+         staff_members=staff_members
      )
 
 
@@ -424,6 +426,42 @@ def get_staff(service_name):
     result = []
     for staff in staff_list: result.append({"name:staff.name"})
     return jsonify(result)
+
+
+
+
+
+@app.route('/staff_dashboard/<int:staff_id>')
+def staff_dashboard(staff_id):
+
+    staff = Staff.query.get_or_404(staff_id)
+
+    today = datetime.now().strftime("%Y-%m-%d")
+
+    # Today's appointments
+    appointments = Appointment.query.filter_by(
+        staff_name=staff.name,
+        appointment_date=today
+    ).all()
+
+    # All appointments of this staff
+    my_appointments = Appointment.query.filter_by(
+        staff_name=staff.name
+    ).order_by(
+        Appointment.appointment_date,
+        Appointment.appointment_time
+    ).all()
+
+    return render_template(
+        "staff_dashboard.html",
+        staff=staff,
+        appointments=appointments,
+        my_appointments=my_appointments
+    )
+
+
+
+
 
 
 if __name__ == "__main__":
