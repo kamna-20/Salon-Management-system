@@ -384,20 +384,22 @@ body{
 /* Customer page */
 
 .customer-box{
-    max-width:1200px;
-    width:90%;
+    width: 100%;
+    height:100vh;
     min-height: 550px;
-    margin: 40px auto;
+    margin: 0;
     background:#deb1b1;
-    padding:35px;
-    border-radius:20px;
+    padding:0;
     box-shadow:0 10px 30px rgba(214,51,132,.2);
     overflow: hidden;
     display: flex;
 }
 .customer-image{
     width: 45%;
+    height:100vh;
+    overflow: hidden;
 }
+
 .customer-image img{
     width: 100%;
     height: 100%;
@@ -412,10 +414,13 @@ body{
 .customer-form h2{
     color:#d63384;
     font-weight:bold;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    font-size: 36px;
+
 }
 .customer-form p{
     margin-bottom: 30px;
+    font-size: 17px;
 }
 
 .customer-form .form-control{
@@ -423,6 +428,8 @@ body{
     padding:12px;
     border:1px solid #ddd;
     margin-bottom: 18px;
+    width:100%;
+    height:50px;
 }
 
  .customer-form .form-control:focus{
@@ -446,136 +453,142 @@ body{
     transform:translateY(-3px);
     background:linear-gradient(135deg,#c2185b,#e91e63);
 }
+html,
 body{
     background:linear-gradient(135deg,#f5ecef,#f9d7e1);
     font-family:'Poppins',sans-serif;
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+}
+/* Full laptop screen*/
+.container.fluid.mt-5 {
+    width: 100vw !important;
+    max-width: none !important;
+    height: 100vh !important;
+    margin:0 !important;
+    padding:0 !important;
 }
 
-/* ---------- Service Page ---------- */
-
-.service-container{
-    background:#fff;
-    border-radius:50px;
-    overflow:hidden;
-    box-shadow:0 10px 30px rgba(0,0,0,0.15);
 }
-.service-container{
+
+
+/* ===== FULL SCREEN SERVICE PAGE ===== */
+
+.service-container {
+    width: 100vw;
+    height: 100vh;
     display: flex;
-    align-items: stretch;
-    justify-content: center;
-    gap: 40px;
-    width: 95%;
-    margin: 40px auto;
-    max-width: 1200px;
-    min-height: 600px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
 
-}
- .services-image{
-    width:50%;
+/* ===== LEFT IMAGE ===== */
 
+.services-image {
+    width: 45%;
+    height: 100vh;
+    overflow: hidden;
 }
-.service-content{
-    width: 50%;
-    background: #fff;
-    border-radius: 20px;
-    padding: 35px 40px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.15);
-}
-.services-image img{
+
+.services-image img {
     width: 100%;
-    height: 550px;
+    height: 100%;
     object-fit: cover;
-    border-radius: 15px;
     display: block;
 }
-.service-form{
-    width: 45%;
-}
 
-.service-banner{
-    padding: 10px;
-    text-align: center;
-    color:#d63384;
+
+/* ===== RIGHT SIDE ===== */
+
+.service-banner {
+    width: 55%;
+    height: 100vh;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 50px 80px;
+
     background: #fff;
 }
 
-.service-banner h2{
-    font-size:30px;
-    font-weight:bold;
-   margin-bottom: 5px;
 
+/* ===== BANNER HEADING ===== */
+
+.service-banner > h2 {
+    font-size: 38px;
+    margin: 0 0 8px;
+    font-weight: 700;
+    color: #d63384;
 }
 
-.service-banner p{
-    font-size:16px;
-    color:#de8e8e;
+.service-banner > p {
+    font-size: 17px;
+    margin: 0 0 35px;
+    font-family: cursive;
     font-weight: bold;
 }
-.service-form{
+
+
+/* ===== FORM CARD ===== */
+
+.service-form {
     width: 100%;
-    padding: 10px 5px;
+    max-width: 650px;
 }
 
-.service-form h2{
-    color:#d63384;
-    font-weight:bold;
-    text-align: center;
-    margin-bottom: 25px;
+
+/* ===== FORM HEADING ===== */
+
+.service-form h2 {
+    font-size: 28px;
+    margin-bottom: 25px !important;
+    color: #d63384;
+    font-weight: bold;
 }
 
-.service-form label{
-    font-weight:600;
-    margin-bottom:5px;
+
+/* ===== LABELS ===== */
+
+.service-form label {
     display: block;
+    margin-bottom: 7px;
+    font-weight: 600;
 }
 
-.form-control,
-.form-select{
-    border-radius:34px;
-    border:6px solid #bd205c;
-    padding:32px;
-    margin-bottom: 18px;
+
+/* ===== INPUTS ===== */
+
+.service-form .form-control {
     width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+
+    border-radius: 8px;
+    border: 1px solid #ccc;
+
+    padding: 10px 14px;
+    font-size: 16px;
 }
 
-.form-control:focus,
-.form-select:focus{
-    border-color:#d63384;
-    box-shadow:0 0 10px rgba(214,51,132,0.3);
+
+/* ===== BUTTON ===== */
+
+.service-form .btn-service {
+    height: 50px;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
 }
 
-.btn-service{
-    background:linear-gradient(45deg,#d63384,#ff69b4);
-    color:#fff;
-    border:none;
-    border-radius:12px;
-    padding:12px;
-    font-size:18px;
-    font-weight:bold;
-    transition:0.3s;
-}
 
-.btn-service:hover{
-    transform:translateY(-3px);
-    box-shadow:0 8px 20px rgba(214,51,132,0.4);
-}
-@media (max-width: 768px){
-    .service-container{
-        width: 95%;
-        display: block;
-    }
-    .services-image{
-        width: 100%;
-    }
-    .services-image img{
-        height: 300px;
-        margin-bottom: 20px;
-    }
-    .service-content{
-        width: 100%;
-        padding:25px 20px;
-    }
-}
 /* ---------- Add Staff Page ---------- */
 
 .service-card{
@@ -746,9 +759,24 @@ body{
     box-shadow:0 10px 30px rgba(0,0,0,0.15);
     margin:30px auto;
 }
+html,body{
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+}
+.payment-page{
+    width: 100vw;
+    height: 100vh;
+    margin:0;
+    padding:0;
+}
+
 
 .payment-image{
     width:45%;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .payment-image img{
@@ -759,8 +787,13 @@ body{
 }
 
 .payment-form{
-    width:79%;
-    padding:40px;
+    width:55%;
+    padding:40px 80px;
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing:border-box;
+    
 }
 
 .payment-form h2{
@@ -1091,7 +1124,7 @@ body{
 }
 
 .services{
-    background:linear-gradient(135deg,#ead5dd,#c3c0c1);
+    background:linear-gradient(135deg,#ead5dd,#c1889b);
     padding:80px 30px;
     text-align:center;
 
