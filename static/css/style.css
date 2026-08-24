@@ -1,9 +1,11 @@
-.login-cointainer{
+/* .login-cointainer{
     min-height: 100vh;
-    padding:20px;
+    width:100%;
+    padding:30px;
     display:flex;
     justify-content:center;
     align-items:center;
+    box-sizing: border-box;
     background:linear-gradient(135deg,#ff9ec4,#d63384,#8e44ad);
 }
 
@@ -112,7 +114,234 @@
         opacity:1;
         transform: translateY(0);
     }
+} */
+
+/* ================= LOGIN PAGE ================= */
+
+.login-cointainer{
+    min-height:100vh;
+    width:100%;
+    padding:30px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-sizing:border-box;
+
+    background:
+        linear-gradient(rgba(40,20,35,.55), rgba(40,20,35,.55)),
+        url("https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1600&q=80");
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
 }
+
+
+/* Login Card */
+
+.login-box{
+    width:100%;
+    max-width:450px;
+    padding:45px 50px;
+    box-sizing:border-box;
+
+    background:rgba(255,255,255,.94);
+    border-radius:24px;
+
+    text-align:center;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
+
+    border:1px solid rgba(255,255,255,.6);
+
+    animation:fadeIn .7s ease;
+}
+
+
+/* Welcome Heading */
+
+.login-box h1{
+    margin:0 0 12px;
+
+    color:#d63384;
+    font-size:34px;
+    font-weight:700;
+    font-family:Georgia,'Times New Roman',serif;
+
+    letter-spacing:1px;
+}
+
+
+/* Salon Name */
+
+.login-box h2{
+    margin:0 0 10px;
+
+    color:#8e44ad;
+    font-family:Georgia,'Times New Roman',serif;
+    font-size:28px;
+
+    font-style:italic;
+    font-weight:bold;
+}
+
+
+/* Subtitle */
+
+.salon-subtitle{
+    color:#666;
+    font-size:15px;
+    font-style:italic;
+    margin-bottom:30px;
+}
+
+
+/* Labels */
+
+.login-box label{
+    display:block;
+
+    text-align:left;
+
+    margin-top:18px;
+    margin-bottom:7px;
+
+    font-size:16px;
+    font-weight:700;
+
+    color:#444;
+}
+
+
+/* Input Fields */
+
+.login-box input{
+    width:100%;
+    height:48px;
+
+    padding:12px 15px;
+
+    margin:0 0 5px;
+
+    box-sizing:border-box;
+
+    border:1px solid #d8d8d8;
+    border-radius:10px;
+
+    background:#cfcccc;
+
+    font-size:16px;
+
+    outline:none;
+
+    transition:.3s;
+}
+
+
+/* Input Focus */
+
+.login-box input:focus{
+    border-color:#d63384;
+
+    box-shadow:0 0 0 3px rgba(214,51,132,.15);
+
+    transform:none;
+}
+
+
+/* Login Button */
+
+.login-box button,
+.login-box input[type="submit"]{
+    width:100%;
+    height:48px;
+
+    margin-top:22px;
+
+    padding:12px;
+
+    border:none;
+    border-radius:10px;
+
+    background:linear-gradient(45deg,#d63384,#8e44ad);
+
+    color:white;
+
+    font-size:17px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+
+/* Button Hover */
+
+.login-box button:hover,
+.login-box input[type="submit"]:hover{
+    transform:translateY(-2px);
+
+    box-shadow:0 8px 20px rgba(214,51,132,.35);
+}
+
+
+/* Register Link */
+
+.login-box a{
+    color:#8e44ad;
+    font-weight:600;
+
+    text-decoration:underline;
+
+    transition:.2s;
+}
+
+
+.login-box a:hover{
+    color:#d63384;
+}
+
+
+/* Animation */
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+
+/* Mobile */
+
+@media(max-width:600px){
+
+    .login-cointainer{
+        padding:20px;
+    }
+
+    .login-box{
+        padding:35px 25px;
+        max-width:420px;
+    }
+
+    .login-box h1{
+        font-size:30px;
+    }
+
+    .login-box h2{
+        font-size:24px;
+    }
+}
+
+
+
 /* Registration form */
 
 .register-container{
@@ -388,7 +617,7 @@ body{
     height:100vh;
     min-height: 550px;
     margin: 0;
-    background:#deb1b1;
+    background:#e8e4e4;
     padding:0;
     box-shadow:0 10px 30px rgba(214,51,132,.2);
     overflow: hidden;
@@ -426,7 +655,7 @@ body{
 .customer-form .form-control{
     border-radius:12px;
     padding:12px;
-    border:1px solid #ddd;
+    border:1px solid #dbc8c8;
     margin-bottom: 18px;
     width:100%;
     height:50px;
@@ -440,18 +669,26 @@ body{
 .btn-save{
     width:100%;
     background:linear-gradient(135deg,#d63384,#ff66a3);
-    color:white;
-    border:none;
+    color:rgb(200, 193, 193);
+    border:#ead5dd;
     border-radius:12px;
-    padding:12px;
+    padding:14px 20px;
     font-size:18px;
     font-weight:bold;
     transition:.3s;
+    margin-top: 10px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(214,51,132,.15);
 }
 
 .btn-save:hover{
     transform:translateY(-3px);
     background:linear-gradient(135deg,#c2185b,#e91e63);
+    box-shadow: 0 10px 22px rgba(214,51,132,.35);
+}
+.btn-save:active{
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(214,51,132,.2);
 }
 html,
 body{
@@ -582,15 +819,20 @@ body{
 
 /* ===== BUTTON ===== */
 
-.service-form .btn-service {
-    height: 50px;
-    border-radius: 8px;
-    font-size: 17px;
-    font-weight: 600;
-    border: none;
+.btn-service{
+    width:100%;
+    background:linear-gradient(135deg,#d63384,#ff66a3);
+    color:rgb(200, 193, 193);
+    border:#ead5dd;
+    border-radius:12px;
+    padding:14px 20px;
+    font-size:18px;
+    font-weight:bold;
+    transition:.3s;
+    margin-top: 10px;
     cursor: pointer;
+    box-shadow: 0 6px 15px rgba(214,51,132,.15);
 }
-
 
 /* ---------- Add Staff Page ---------- */
 /* 
@@ -1123,6 +1365,9 @@ html,body{
     background-position:center;
     align-items: center;
     display:flex;
+    box-sizing: border-box;
+    background-attachment: fixed;
+    padding: 30px;
 
 }
 
@@ -1135,12 +1380,14 @@ html,body{
 
 
 .booking-box{
-    max-width:500px;
+    max-width:1200px;
+    width:100%;
     background:rgba(184, 182, 182, 0.95);
-    padding:40px;
-    border-radius:25px;
+    padding: 28px 40px;
+    border-radius:22px;
     box-shadow:0 10px 30px rgba(0,0,0,0.3);
     backdrop-filter: blur(6px);
+    box-sizing: border-box;
 }
 
 .booking-box h1{
@@ -1168,10 +1415,10 @@ h1{
 }
 
 .booking-box label{
-    font-size:17px;
-    font-weight:bold;
+    font-size:15px;
+    font-weight:700;
     color:#444;
-    margin-bottom:8px;
+    margin-bottom:6px;
     display:block;
 }
 
