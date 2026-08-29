@@ -966,6 +966,7 @@ body {
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     align-items: stretch !important;
+    color:#cc597f
 
     overflow: hidden !important;
 
@@ -1006,8 +1007,8 @@ body {
     margin-bottom: 10px;
 }
 .appointment-form p{
-    color: #666666 !important;
-    font-size: 18px;
+    color: #d11818 !important;
+    font-size: 21px;
     margin-top: 0;
     margin-bottom: 25px;
 }
@@ -1027,7 +1028,7 @@ body {
 
     box-sizing: border-box !important;
 
-    background: #dfd5d5 !important;
+    background: #d8c8c8 !important;
 
     overflow-y: auto !important;
 }
@@ -1043,8 +1044,8 @@ body {
     box-sizing: border-box !important;
     border: 2px solid #f7f0f0 !important;
     border-radius: 12px !important;
-    font-size: 16px;
-    background: rgb(241, 233, 233);
+    font-size: 20px;
+    background: rgb(216, 211, 211);
 
 }
 .appointment-form input:focus,
@@ -1292,221 +1293,571 @@ html,body{
     border-radius: 8px;
     font-size: 18px;
 }
-               /*---------  Customer book appointment -----------*/
+   
 
-/* .booking-box{
-    width:450px;
-    margin:40px auto;
-    background:#ffffff;
-    padding:30px;
-    border-radius:20px;
-    box-shadow:0 8px 25px rgba(0,0,0,0.2);
-}
 
-.booking-box h1{
-    text-align:center;
-    color:#d63384;
-    margin-bottom:5px;
-}
+/* ==========================================
+   GLOW & GRACE - LUXURY BOOKING PAGE
+   ========================================== */
 
-.booking-box p{
-    text-align:center;
-    color:gray;
-    margin-bottom:20px;
-}
-
-.booking-box label{
-    font-weight:bold;
-    margin-top:10px;
-    display:block;
-}
-
-.form-control{
-    width:100%;
-    padding:12px;
-    margin-top:6px;
-    margin-bottom:15px;
-    border:1px solid #ccc;
-    border-radius:10px;
-    font-size:16px;
-}
-
-.form-control:focus{
-    border:2px solid #d63384;
-    outline:none;
-}
-
-.book-btn{
-    width:100%;
-    padding:14px;
-    border:none;
-    border-radius:10px;
-    background:#5d5559;
-    color:white;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
-
-}
-
-.book-btn:hover{
-    background:#938c90;
-}
-
-.home-btn{
-    display:block;
-    text-align:center;
-    text-decoration:none;
-    background:#6c757d;
-    color:white;
-    padding:12px;
-    border-radius:10px;
-    transition: all 0.4s ease;
-    box-shadow: 0 8px 20px rgba(214,51,132,.5);
-    backdrop-filter:blur(10px);
-    border: 1px solid  rgba(255,255,255,.4)
-}
-
-.home-btn:hover{
-    background:#495057;
-}
-
-.success{
-    color:green;
-    font-weight:bold;
-    text-align:center;
-    
-} */
-
-/* Book Appointment */
-
-.booking-page{
-    min-height:100vh;
-    background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
-    url("https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1600&q=80");
-    justify-content: center;
-    background-position:center;
-    align-items: center;
-    display:flex;
-    box-sizing: border-box;
-    background-attachment: fixed;
-    padding: 30px;
-
-}
-
-html,body{
-    margin: 0;
-    padding: 0%;
+.luxury-booking-page {
     width: 100%;
-    overflow-x: hidden;
+    min-height: 100vh;
+
+    display: grid;
+    grid-template-columns: 38% 62%;
+
+    background: #f8f1e8;
+
+    overflow: hidden;
 }
 
 
-.booking-box{
-    max-width:1000px;
-    width:90%;
-    background:gainsboro;
-    padding: 28px 40px;
-    border-radius:22px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.3);
-    backdrop-filter: blur(6px);
-    box-sizing: border-box;
+/* ==========================================
+   LEFT SIDE
+   ========================================== */
+
+.booking-intro {
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 35px 45px;
+
+    background:
+        linear-gradient(
+            rgba(238, 218, 190, 0.78),
+            rgba(231, 205, 174, 0.85)
+        );
+
+    overflow: hidden;
 }
 
-.booking-box h1{
-    text-align:center;
-    color:#a55f76;
-    font-size:48px;
-    font-weight:bold;
-    margin-bottom:10px;
-    font-family: cursive;
-}
-h1{
-    text-decoration: underline;
-    text-decoration-color:#a55f76 ;
-    text-decoration-thickness: 3px;
+
+/* Logo Symbol */
+
+.salon-logo {
+    text-align: center;
+
+    color: #b98745;
+
+    font-size: 42px;
+
+    margin-bottom: -5px;
 }
 
-.booking-box p{
-    text-align:center;
-    color:grey;
-    margin-bottom:30px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+
+/* Salon Name */
+
+.booking-intro h2 {
+    text-align: center;
+
+    margin: 0;
+
+    color: #252020;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 39px;
+
     font-style: italic;
-    font-weight: bold;
-    font-size: 30px;
-}
 
-.booking-box label{
-    font-size:15px;
-    font-weight:700;
-    color:#444;
-    margin-bottom:6px;
-    display:block;
-}
-
-.booking-box .form-control{
-    
-    padding:12px;
-    border-radius:12px;
-    border: 1px solid #b3aeae;
-    margin-bottom:10px;
-    font-size:16px;
-    transition:.3s;
-    height: 50px;
-}
-
-.booking-box .form-control:focus{
-    border-color:#d63384;
-    box-shadow:0 0 10px rgba(214,51,132,.3);
-    outline:none;
-    background-color: rgb(207, 207, 204);
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: large;
-}
-
-.btn-primary{
-    background:linear-gradient(45deg,#ddb7d0,#d3a9b7);
-    border:none;
-    border-radius:12px;
-    padding:12px;
-    font-size:18px;
-    font-weight:bold;
-    transition:.3s;
-}
-
-.btn-primary:hover{
-    transform:translateY(-3px);
-    box-shadow:0 10px 20px rgba(214,51,132,.4);
-    background: #c2185b;
-}
-
-.btn-outline-dark{
-    border-radius:12px;
-    font-size:18px;
-    font-weight:bold;
-    transition:.3s;
-    width: 100%;
-
-}
-
-.btn-outline-dark:hover{
-    background:#653e3e;
-    color:rgb(144, 139, 139);
-}
-
-.alert-success{
-    border-radius:12px;
-    text-align:center;
-    font-weight:bold;
+    font-weight: normal;
 }
 
 
-body{
-    background: #ccc9c9;
+.booking-intro h3 {
+    text-align: center;
+
+    margin: 5px 0 25px;
+
+    color: #b88745;
+
+    font-size: 15px;
+
+    letter-spacing: 8px;
+}
+
+
+/* Salon Image Area */
+
+.salon-image-area {
+    height: 65vh;
+
+    border-radius: 180px 180px 20px 20px;
+
+    background:
+        linear-gradient(
+            rgba(80, 55, 35, 0.18),
+            rgba(80, 55, 35, 0.25)
+        ),
+        url("https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=900&q=85");
+
+    background-size: cover;
+
+    background-position: center;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* Text over image */
+
+.salon-overlay {
+    position: absolute;
+
+    left: 35px;
+    bottom: 45px;
+
+    color: white;
+}
+
+
+.salon-overlay h1 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 34px;
+
+    line-height: 1.2;
+
+    font-weight: normal;
+
+    margin-bottom: 18px;
+}
+
+
+.salon-overlay h1 span {
+    color: #d48b9d;
+}
+
+
+.salon-overlay p {
+    font-size: 15px;
+
+    line-height: 1.7;
+
     margin: 0;
 }
 
+
+/* Premium Box */
+
+.premium-box {
+    position: absolute;
+
+    bottom: 35px;
+    left: 45px;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    width: 270px;
+
+    padding: 16px 20px;
+
+    background: #bd687e;
+
+    color: white;
+
+    border-radius: 12px;
+
+    box-shadow: 0 8px 25px rgba(80, 40, 50, 0.2);
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+.premium-box span {
+    font-size: 30px;
+
+    color: #f6dca3;
+}
+
+
+/* ==========================================
+   RIGHT SIDE
+   ========================================== */
+
+.booking-form-area {
+    position: relative;
+
+    padding: 55px 75px 50px;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(205, 166, 111, 0.08),
+            transparent 30%
+        ),
+        #fffdf9;
+
+    min-height: 100vh;
+
+    box-sizing: border-box;
+}
+
+
+/* Header */
+
+.booking-header {
+    text-align: center;
+
+    margin-bottom: 38px;
+}
+
+
+.booking-header h1 {
+    margin: 0;
+
+    color: #171414;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 51px;
+
+    font-weight: normal;
+
+    letter-spacing: -1px;
+}
+
+
+.booking-header h1 span {
+    color: #b75f76;
+}
+
+
+.gold-line {
+    margin: 12px auto;
+
+    color: #c99a55;
+
+    font-size: 15px;
+
+    letter-spacing: 2px;
+}
+
+
+.booking-header h2 {
+    margin: 0;
+
+    color: #b98745;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 25px;
+
+    font-style: italic;
+
+    font-weight: normal;
+}
+
+
+/* ==========================================
+   FORM GRID
+   ========================================== */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    column-gap: 35px;
+
+    row-gap: 27px;
+}
+
+
+/* Individual field */
+
+.luxury-field {
+    width: 100%;
+}
+
+
+/* Label */
+
+.luxury-field label {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: #292525;
+
+    font-size: 15px;
+
+    font-weight: 600;
+}
+
+
+.luxury-field label::first-letter {
+    color: #bd6177;
+}
+
+
+/* Input & Select */
+
+.luxury-field input,
+.luxury-field select {
+    width: 100%;
+
+    height: 58px;
+
+    padding: 0 18px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #e4dcd4;
+
+    border-radius: 9px;
+
+    background: #fff;
+
+    color: #555;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.3s;
+
+    box-shadow: 0 2px 8px rgba(50, 30, 20, 0.03);
+}
+
+
+/* Placeholder */
+
+.luxury-field input::placeholder {
+    color: #999;
+}
+
+
+/* Focus */
+
+.luxury-field input:focus,
+.luxury-field select:focus {
+
+    border-color: #c1778b;
+
+    box-shadow:
+        0 0 0 3px rgba(193, 119, 139, 0.10);
+
+    background: white;
+}
+
+
+/* ==========================================
+   BOOK BUTTON
+   ========================================== */
+
+.luxury-book-btn {
+
+    display: block;
+
+    width: 75%;
+
+    height: 58px;
+
+    margin: 45px auto 0;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #bd6177,
+            #c7798c
+        );
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.3px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px rgba(180, 91, 113, 0.25);
+
+    transition: 0.3s;
+}
+
+
+.luxury-book-btn:hover {
+
+    transform: translateY(-2px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #a95169,
+            #b9677c
+        );
+
+    box-shadow:
+        0 14px 30px rgba(180, 91, 113, 0.35);
+}
+
+
+/* Note */
+
+.booking-note {
+
+    text-align: center;
+
+    margin-top: 18px;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+
+/* Success Message */
+
+.booking-message {
+
+    text-align: center;
+
+    padding: 12px;
+
+    margin-bottom: 20px;
+
+    border-radius: 8px;
+
+    background: #f4e4e8;
+
+    color: #8d4e61;
+
+    font-size: 14px;
+}
+
+
+/* ==========================================
+   MOBILE
+   ========================================== */
+
+@media (max-width: 900px) {
+
+    .luxury-booking-page {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-intro {
+        min-height: 500px;
+    }
+
+    .salon-image-area {
+        height: 400px;
+    }
+
+    .booking-form-area {
+        padding: 45px 30px;
+    }
+
+    .booking-header h1 {
+        font-size: 40px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .booking-intro {
+        padding: 25px 20px;
+    }
+
+    .booking-intro h2 {
+        font-size: 32px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-form-area {
+        padding: 35px 20px;
+    }
+
+    .booking-header h1 {
+        font-size: 34px;
+    }
+
+    .booking-header h2 {
+        font-size: 21px;
+    }
+
+    .luxury-book-btn {
+        width: 100%;
+    }
+
+    .premium-box {
+        left: 20px;
+        bottom: 20px;
+    }
+}
+/* ================================
+   BACK TO HOME - LUXURY STYLE
+   ================================ */
+
+/* .booking-form-area > a[href="/"] { */
+.back-home-btn{
+    display: block !important;
+    align-items: left!important;
+    justify-content: left !important;
+    width:fit-content !important;
+    
+    margin-top: 28px !important;
+    
+    padding: 11px 24px !important;
+    width:180px !important;
+    
+    color: #c0778f !important;
+    background: transparent !important;
+    
+    border: 1px solid #c98b9f !important;
+    border-radius: 25px !important;
+    
+    font-family: Georgia, "Times New Roman", serif !important;
+    font-size: 20px !important;
+    font-weight:500 !important;
+    
+    text-decoration: none !important;
+    
+    transition: all 0.3s ease  !important;
+}
+
+
+/* Hover */
+/* .booking-form-area form > a[href="/"]:hover { */
+.back-home-btn:hover{
+    color: white;
+    
+    background: linear-gradient(
+        135deg,
+        #a55f76,
+        #c98b9f
+    
+    );
+    
+    border-color: #a55f76 !important;
+    
+    transform: translateY(-2px) !important;
+    
+    box-shadow: 0 7px 18px rgba(195, 118, 144, 0.25) !important;
+} 
+
+
+                          /* First Page*/
 
 .hero-section{
     height:90vh;

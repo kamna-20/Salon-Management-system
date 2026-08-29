@@ -1,70 +1,222 @@
 {% extends "base.html" %}
+
 {% block content %}
-<div class="booking-page">
-<div class="booking-box">
 
-<h1 class="text-center mb-2">Book Your Appointment</h1>
-<p class="text-center text-muted mb-4"> Glow & Grace Salon</p>
+<div class="luxury-booking-page">
 
-{% if message %}
-<p class=" alert alert-success">{{ message }}></p>
-{% endif %}
+    <!-- LEFT SIDE -->
+    <div class="booking-intro">
 
-<form method="POST">
+        <div class="salon-logo">
+            ✧
+        </div>
 
-    <label>Customer Name</label><br>
-    <input type="text" name="customer_name" class="form-control" required><br><br>
+        <h2>Glow & Grace</h2>
+        <h3>S A L O N</h3>
+
+        <div class="salon-image-area">
+            <div class="salon-overlay">
+                <h1>Beauty is<br>a reflection of<br>self-care <span>♥</span></h1>
+
+                <p>
+                    Book your appointment and<br>
+                    let us bring out the best in you.
+                </p>
+            </div>
+        </div>
+
+        <div class="premium-box">
+            <span>♕</span>
+            <div>
+                <b>Premium Experience</b><br>
+                Luxurious Services<br>
+                Personalized For You
+            </div>
+        </div>
+
+    </div>
 
 
+    <!-- RIGHT SIDE -->
+    <div class="booking-form-area">
 
-    <label> Customer Gender</label><br>
-    <select name="customer_gender"
-            id="customer_gender"
-            class="form-control" required>
-            <option value="" disabled selected>Select Gender</option>
-            <option value="Male"> Male</option>
-            <option value="Female">Female</option>
-        </select>
-        <br><br>
+        <div class="booking-header">
 
-    <label>Service</label><br>
-    <select name="service_name" class="form-control" required>
-        <option value="" disabled selected> Select Services</option>
-        {% for service in services %}
-        <option value="{{ service.service_name }}">
-            {{ service.service_name }}
-        </option>
-        {% endfor %}
-    </select><br><br>
+            <h1>
+                Book Your <span>Appointment</span>
+            </h1>
 
-    <label>Staff</label><br>
-    <select name="staff_name"  class="form-control" required>
-         <option value="" disabled selected> Select Staff</option>
-        {% for staff in staffs %}
-        <option value="{{ staff.name }}">
-            {{ staff.name }} - {{ staff.specialization }}
-        </option>
-        {% endfor %}
-    </select><br><br>
+            <div class="gold-line">
+                ───────── ✧ ─────────
+            </div>
 
-    <label>Appointment Date</label><br>
-    <input type="date" name="appointment_date" class="form-control" min="{{ today }}" required><br><br>
+            <h2>Glow & Grace Salon</h2>
 
-    <label>Appointment Time</label><br>
-    <input type="time" name="appointment_time" class="form-control" required><br><br>
+        </div>
 
-    <button type="submit" class="btn btn-primary btn-lg w-100 mt-3"> Book Appointment</button>
 
-</form>
+        {% if message %}
+        <div class="booking-message">
+            {{ message }}
+        </div>
+        {% endif %}
 
-<br>
 
-<a href="/" class=" btn btn-outline dark btn-lg w-100 mt-3"> Back to Home </a>
+        <form method="POST">
+
+            <div class="form-grid">
+
+                <!-- CUSTOMER NAME -->
+                <div class="luxury-field">
+
+                    <label>♙ &nbsp; Customer Name</label>
+
+                    <input
+                        type="text"
+                        name="customer_name"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- GENDER -->
+                <div class="luxury-field">
+
+                    <label>⚥ &nbsp; Customer Gender</label>
+
+                    <select
+                        name="customer_gender"
+                        id="customer_gender"
+                        required
+                    >
+                        <option value="" disabled selected>
+                            Select Gender
+                        </option>
+
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- SERVICE -->
+                <div class="luxury-field">
+
+                    <label>♧ &nbsp; Service</label>
+
+                    <select
+                        name="service_name"
+                        id="service_name"
+                        required
+                    >
+
+                        <option value="" disabled selected>
+                            Select Service
+                        </option>
+
+                        {% for service in services %}
+
+                        <option value="{{ service.service_name }}">
+                            {{ service.service_name }}
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+
+                <!-- STAFF -->
+                <div class="luxury-field">
+
+                    <label>♙ &nbsp; Staff</label>
+
+                    <select
+                        name="staff_name"
+                        id="staff_name"
+                        required
+                    >
+
+                        <option value="" disabled selected>
+                            Select Staff
+                        </option>
+
+                        {% for staff in staffs %}
+
+                        <option value="{{ staff.name }}">
+                            {{ staff.name }} - {{staff.specialization}}
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+
+                <!-- DATE -->
+                <div class="luxury-field">
+
+                    <label>▣ &nbsp; Appointment Date</label>
+
+                    <input
+                        type="date"
+                        name="appointment_date"
+                        id="appointment_date"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- TIME -->
+                <div class="luxury-field">
+
+                    <label>◷ &nbsp; Appointment Time</label>
+
+                    <input
+                        type="time"
+                        name="appointment_time"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- BUTTON -->
+            <button type="submit" class="luxury-book-btn">
+                ♧ &nbsp; Book Appointment
+            </button>
+
+
+            <p class="booking-note">
+                ♡ &nbsp; We value your time. Your appointment is important to us!
+            </p>
+            <a href="/" class="back-home-btn">Back to Home </a>
+        </form>
+
+    </div>
+
 </div>
-</div>
 
+
+<script>
+
+    // Prevent past dates
+    const today = new Date().toISOString().split("T")[0];
+
+    document.getElementById("appointment_date").min = today;
+
+    
+</script>
 
 
 
 {% endblock %}
-
