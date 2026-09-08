@@ -3,6 +3,12 @@
 {% block content %}
 
 <div class="luxury-booking-page">
+    {% if message %}
+<div class="booking-message">
+    <div class="success-check">✓</div>
+    <h2>{{ message }}</h2>
+</div>
+{% endif %}
 
     <!-- LEFT SIDE -->
     <div class="booking-intro">
@@ -80,27 +86,20 @@
 
                 </div>
 
-
-                <!-- GENDER -->
+                <!-- Address -->
                 <div class="luxury-field">
 
-                    <label>⚥ &nbsp; Customer Gender</label>
+                    <label>♙ &nbsp; Address</label>
 
-                    <select
-                        name="customer_gender"
-                        id="customer_gender"
+                    <input
+                        type="text"
+                        name="customer_address"
+                        placeholder="Enter your Address"
                         required
                     >
-                        <option value="" disabled selected>
-                            Select Gender
-                        </option>
-
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-
-                    </select>
 
                 </div>
+                
 
 
                 <!-- SERVICE -->
@@ -111,8 +110,8 @@
                     <select
                         name="service_name"
                         id="service_name"
-                        required
-                    >
+                        required>
+                    
 
                         <option value="" disabled selected>
                             Select Service
@@ -173,6 +172,18 @@
 
                 </div>
 
+                 <!--Gender-->
+                <div class="luxury-field">
+                     <label> &nbsp; Customer Gender</label><br>
+                    <select name="customer_gender"
+                       id="customer_gender"
+                     class="form-control" required>
+                     <option value="" disabled selected>Select Gender</option>
+                      <option value="Male"> Male</option>
+                       <option value="Female">Female</option>
+                    </select>
+                </div>
+
 
                 <!-- TIME -->
                 <div class="luxury-field">
@@ -181,7 +192,7 @@
 
                     <input
                         type="time"
-                        name="appointment_time"
+                        name="appointment_time" id="appointment_time"
                         required
                     >
 
@@ -207,7 +218,7 @@
 </div>
 
 
-<script>
+<!-- <script>
 
     // Prevent past dates
     const today = new Date().toISOString().split("T")[0];
@@ -215,6 +226,32 @@
     document.getElementById("appointment_date").min = today;
 
     
+</script> -->
+
+<script>
+    const dateInput = document.getElementById("appointment_date");
+    const timeInput = document.getElementById("appointment_time");
+
+    const today = new Date().toISOString().split("T")[0];
+    dateInput.min = today;
+
+    dateInput.addEventListener("change", function () {
+
+        const selectedDate = new Date(this.value);
+        const day = selectedDate.getDay();
+
+        if (day === 0) {
+            // Sunday: 11 AM - 6 PM
+            timeInput.min = "11:00";
+            timeInput.max = "18:00";
+        } else {
+            // Monday-Saturday: 10 AM - 8 PM
+            timeInput.min = "10:00";
+            timeInput.max = "20:00";
+        }
+
+        timeInput.value = "";
+    });
 </script>
 
 

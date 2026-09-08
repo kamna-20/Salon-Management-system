@@ -25,7 +25,7 @@
                        placeholder="Enter Customer Name" required>
 
                 <label>Service</label>
-               <select name="service_id" onchange="showPrice()" id="service">
+               <select name="service_id" onchange="showPrice()" id="service" class="form-control">
                {% for service in services %}
                <option value="{{service.id}}" data-price="{{service.price}}">
                 {{service.service_name}}

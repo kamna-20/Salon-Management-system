@@ -25,7 +25,7 @@ with app.app_context():
 
     try:
         db.session.execute(text(
-            "ALTER TABLE staff ADD COLUMN gender VARCHAR(10)"
+            "ALTER TABLE user ADD COLUMN role VARCHAR(20) DEFAULT 'customer'"
         ))
         db.session.commit()
     except:
@@ -33,11 +33,17 @@ with app.app_context():
 
     try:
         db.session.execute(text(
-            "ALTER TABLE appointment ADD COLUMN customer_gender VARCHAR(10)"
+            "ALTER TABLE staff ADD COLUMN gender VARCHAR(10)"
         ))
         db.session.commit()
     except:
         db.session.rollback()
+
+        try:
+            db.session.execute(text("ALTER TABLE appointment ADD COLUMN customer_gender VARCHAR(10)"))
+            db.session.commit()
+        except:
+            db.session.rollback()
 
 
 @app.route("/")
@@ -57,7 +63,8 @@ def register():
         user = User(
             name=name,
             email=email,
-            password=password
+            password=password,
+            role="customer"
         )
 
         db.session.add(user)
@@ -81,11 +88,12 @@ def login():
             password=password
         ).first()
 
-        if user:
-            session["logged_in"]=True
+        if user and user.role =="admin":
+            session["logged_in"]= True
+            session["role"]="admin"
             return redirect(url_for("dashboard"))
         else:
-            return "Invalid Email or Password"
+            return "Access Denied: Admin login Required"
     return render_template("login.html")
 
 @app.route("/customer", methods=["GET", "POST"])
@@ -160,10 +168,36 @@ def appointment():
 
         customer_name = request.form["customer_name"]
         customer_gender = request.form["customer_gender"]
+        customer_address = request.form["customer_address"]
         service_name = request.form["service_name"]
         staff_name = request.form["staff_name"]
         appointment_date = request.form["appointment_date"]
         appointment_time = request.form["appointment_time"]
+
+          # Check salon working hours
+        selected_date = datetime.strptime(appointment_date, "%Y-%m-%d").date()
+
+        if selected_date.weekday() == 6:  # Sunday
+         if not ("11:00" <= appointment_time <= "18:00"):
+            return render_template(
+            "appointment.html",
+            message="Sunday appointment time must be between 11:00 AM and 6:00 PM.",
+            staffs=staffs,
+            services=services,
+            today=date.today()
+        )
+        else:     
+           # Monday to Saturday
+         if not ("10:00" <= appointment_time <= "20:00"):
+            return render_template(
+            "appointment.html",
+            message="Appointment time must be between 10:00 AM and 8:00 PM.",
+            staffs=staffs,
+            services=services,
+            today=date.today()
+        )
+
+
 
         # Find selected staff
         selected_staff = Staff.query.filter_by(name=staff_name).first()
@@ -223,6 +257,8 @@ def appointment():
         appointment = Appointment(
             customer_name=customer_name,
             service_name=service_name,
+            customer_address=customer_address,
+            customer_gender=customer_gender,
             staff_name=staff_name,
             appointment_date=appointment_date,
             appointment_time=appointment_time
@@ -250,7 +286,7 @@ def appointment():
 
 @app.route("/dashboard")
 def dashboard():
-  if"logged_in"not in session:
+  if"logged_in"not in session or session.get("role")!= "admin":
       return redirect(url_for("login"))
   
   total_customers = Customer.query.count()
@@ -308,6 +344,7 @@ def book_appointment():
     if request.method == "POST":
 
         customer_name = request.form["customer_name"]
+        customer_address = request.form.get("customer_address")
         customer_gender = request.form["customer_gender"]
         service_name = request.form["service_name"]
         staff_name = request.form["staff_name"]
@@ -315,20 +352,7 @@ def book_appointment():
         appointment_time = request.form["appointment_time"]
 
 
-        # Gender filtering for selected services#
-
-        if service_name in ["Body Massage","Pedicure"]:
-            selected_staff = Staff.query.filter_by(name=staff_name).first()
-            if not selected_staff:return render_template("book_appointment.html", 
-                                                         message="Staff not found.",
-                                                           staffs=staffs,
-                                                           services=services,today=date.today())
-            if selected_staff.gender!= customer_gender:
-              return render_template("book_appointment.html",
-                               message="For this services,staff gender must match customer gender.",
-                               staffs=staffs,
-                               services=services,
-                               today=date.today())
+       
 
         # Past date check#
         selected_date = datetime.strptime(
@@ -364,6 +388,8 @@ def book_appointment():
         appointment = Appointment(
             customer_name=customer_name,
             service_name=service_name,
+            customer_gender=customer_gender,
+            customer_address=customer_address,
             staff_name=staff_name,
             appointment_date=appointment_date,
             appointment_time=appointment_time
@@ -459,7 +485,8 @@ def staff_dashboard(staff_id):
         my_appointments=my_appointments
     )
 
-
+with app.app_context():
+    admin = User.query.get(31)
 
 
 

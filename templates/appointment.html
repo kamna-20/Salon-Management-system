@@ -4,6 +4,12 @@
 
 
 <div class="appointment-page">
+       {% if message %}
+<div class="booking-message">
+    <div class="success-check">✓</div>
+    <h2>{{ message }}</h2>
+</div>
+{% endif %}
 
     <div class="appointment-box">
 
@@ -31,15 +37,27 @@
                 placeholder="Enter Customer Name" required >
 
 
-                <label> Customer Gender</label><br>
-    <select name="customer_gender"
-            id="customer_gender"
-            class="form-control" required>
-            <option value="" disabled selected>Select Gender</option>
-            <option value="Male"> Male</option>
-            <option value="Female">Female</option>
-        </select>
-        <br><br>
+                <label> Customer Gender</label>
+                 <select name="customer_gender"
+                 id="customer_gender"class="form-control" required>
+                 <option value="" disabled selected>Select Gender</option>
+                  <option value="Male"> Male</option>
+                 <option value="Female">Female</option>
+                 </select>
+                
+
+
+                  <!-- Address -->
+                <label>Address</label>
+                 <input
+                        type="text"
+                        name="customer_address"
+                        placeholder="Enter your Address"
+                        required
+                    >
+
+               
+    
 
 
                 <label>Service</label>
@@ -59,7 +77,7 @@
 
 
                 <label>Time</label>
-                <input type="time" name="appointment_time" required>
+                <input type="time" name="appointment_time" id="appointment_time" required>
 
              <label class="mt-3">Staff Name</label>
                  <select name="staff_name"  id="staff_name" class="form-select"required>
@@ -86,7 +104,31 @@
     </div>
 
 </div>
+<script>
+    const dateInput = document.getElementById("appointment_date");
+    const timeInput = document.getElementById("appointment_time");
 
+    const today = new Date().toISOString().split("T")[0];
+    dateInput.min = today;
+
+    dateInput.addEventListener("change", function () {
+
+        const selectedDate = new Date(this.value);
+        const day = selectedDate.getDay();
+
+        if (day === 0) {
+            // Sunday: 11 AM - 6 PM
+            timeInput.min = "11:00";
+            timeInput.max = "18:00";
+        } else {
+            // Monday-Saturday: 10 AM - 8 PM
+            timeInput.min = "10:00";
+            timeInput.max = "20:00";
+        }
+
+        timeInput.value = "";
+    });
+</script>
 
 {% endblock %}
 

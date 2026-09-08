@@ -22,7 +22,8 @@
                 <input type="text" name="name" class="form-control"
                 placeholder="Customer Name" required>
 
-                <input type="text" name="phone" class="form-control"
+                <input type="tel" name="phone"  pattern="[0-9]{10}" maxlength="10" minlength="10"
+                class="form-control"
                 placeholder="Phone Number" required>
 
                 <textarea name="address" class="form-control"
