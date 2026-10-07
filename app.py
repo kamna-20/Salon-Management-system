@@ -188,7 +188,7 @@ def appointment():
         )
         else:     
            # Monday to Saturday
-         if not ("10:00" <= appointment_time <= "20:00"):
+         if not ("10:00" <= appointment_time <= "22:00"):
             return render_template(
             "appointment.html",
             message="Appointment time must be between 10:00 AM and 8:00 PM.",
@@ -484,6 +484,17 @@ def staff_dashboard(staff_id):
         appointments=appointments,
         my_appointments=my_appointments
     )
+
+@app.route('/complete_appointment/<int:appointment_id>', methods=['POST'])
+def complete_appointment(appointment_id):
+
+    appointment = Appointment.query.get_or_404( appointment_id)
+
+    appointment.status = "Completed"
+    db.session.commit()
+    return redirect (request.referrer or url_for ('dashboard'))
+
+
 
 with app.app_context():
     admin = User.query.get(31)

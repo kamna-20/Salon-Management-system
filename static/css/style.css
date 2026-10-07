@@ -1986,7 +1986,7 @@ body{
 
 .complete-btn {
     border: none;
-    background: #198754;
+    background: #2f875e;
     color: white;
     padding: 7px 14px;
     border-radius: 8px;
@@ -1998,8 +1998,9 @@ body{
     cursor: default;
 }
 
-.no-appointment {
-    text-align: center;
-    padding: 30px;
-    color: #777;
+
+.complete-btn:hover{
+    background-color: #248356;
+    color: white;
+
 }

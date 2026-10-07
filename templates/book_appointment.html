@@ -218,15 +218,7 @@
 </div>
 
 
-<!-- <script>
 
-    // Prevent past dates
-    const today = new Date().toISOString().split("T")[0];
-
-    document.getElementById("appointment_date").min = today;
-
-    
-</script> -->
 
 <script>
     const dateInput = document.getElementById("appointment_date");
@@ -245,9 +237,9 @@
             timeInput.min = "11:00";
             timeInput.max = "18:00";
         } else {
-            // Monday-Saturday: 10 AM - 8 PM
+            // Monday-Saturday: 10 AM - 10 PM
             timeInput.min = "10:00";
-            timeInput.max = "20:00";
+            timeInput.max = "22:00";
         }
 
         timeInput.value = "";

@@ -54,15 +54,25 @@
 
                         <td>
                             <span class="status-badge">
-                                Booked
+                                {{ appointment.status }}
                             </span>
                         </td>
 
                         <td>
-                            <button class="complete-btn"
-                                    onclick="this.innerHTML='✓ Completed'; this.disabled=true;">
+                            {% if appointment.status != "Completed" %}
+                             
+                            <form method="POST"
+                            action="{{ url_for('complete_appointment', appointment_id=appointment.id) }}">
+
+                             <button type="submit"
+                             class="complete-btn">
+                                
                                 Complete
                             </button>
+                        </form>
+                        {% else %}
+                        <span class="status-badge"> Completed</span>
+                        {% endif %}
                         </td>
 
                     </tr>
